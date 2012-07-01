@@ -25,7 +25,7 @@ namespace "app", ->
                 bio: "string"
                 avatar_url: "string"
                 blogs: "List[blog]"
-                recent_destinations: "List[destination]"
+                recent_posts: "List[blog_post]"
                 
             env.defineResource "photo", "photos",
                 id: "number"
@@ -36,29 +36,15 @@ namespace "app", ->
                 title: "string"
                 description: "string"
                 content: "string"
-                destinations: "List[destination]"
-                photos: "List[photo]"
-                view_option: "view_option"
+                blog_posts: "List[blog_post]"
                 
-            env.defineResource "view_option", "view_options",
-                id: "number"
-                zoom: "number"
-                lat_lng: "lat_lng"
-                
-            env.defineResource "lat_lng", "lat_lngs"
-                id: "number"
-                lat: "number"
-                lng: "number"
-                
-            env.defineResource "destination", "destinations"
+            env.defineResource "blog_post", "blog_posts"
                 id: "number"
                 title: "string"
                 description: "string"
                 address: "string"
                 content: "string"
-                photos: "List[photo]"
                 blog_id: "number"
-                view_option: "view_option"
                 
             container
             

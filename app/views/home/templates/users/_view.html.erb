@@ -40,7 +40,7 @@
             {[ if (blogs().length > 0) { ]}
                 <h2>Blogs</h2>
                 <hr />                
-                <div data-bind="template: { name: 'blog-list-tmpl', data: blogs() }"></div>
+                <div data-bind="template: { name: 'template:blogs/list', data: blogs() }"></div>
             {[ } ]}
         </section>
     </div>
@@ -49,7 +49,7 @@
             {[ if (blogs().length > 0) { ]}
                 <h2>Recent Posts</h2>
                 <hr />
-                <div data-bind="template: { name: 'blog-post-list-tmpl', data: recent_posts() }"></div>
+                <div data-bind="template: { name: 'template:blog_posts/list', data: recent_posts() }"></div>
             {[ } else { ]}
                 <!-- TODO: only show this if authenticated as user -->
                 <h2>Get Started</h2>
