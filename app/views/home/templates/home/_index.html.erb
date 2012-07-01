@@ -1,3 +1,38 @@
-<p>Home Page</p>
-<p>Home Page</p>
-<p>Home Page</p>
+{[ if (!authorized()) { ]}
+
+    <div class="hero-unit">
+        <h1>blogr</h1>
+        <p>generic blogging on the internets</p>
+        
+        <hr />
+
+        <p>
+            <a href="/auth/signin" class="nav-to btn btn-primary btn-large">sign in</a>
+            or <a href="#">register</a> for an account
+        </p>
+    </div>
+
+{[ } ]}
+
+<div class="page-header">
+    <h1>Current Activity</h1>
+</div>
+
+<div class="row">
+    <div class="span8">
+        <h2>Recent Posts</h2>
+        <div data-bind="template: { name: 'template:blog_posts/list', data: recentPosts() }" />
+    </div>
+    <div class="span4">
+        <h2>Trending Tags</h2>
+        <p class="leader">
+            {[ _.each(trendingTags(), function(tag, index, tags) { ]}
+                <a class="nav-to" href="{{ '/search/tag/' + tag.tag }}">{{ tag.tag }}</a>
+                (<span data-bind="text: tag.count" />)
+                {[ if (index < tags.length - 1) { ]}
+                    &sdot;
+                {[ } ]}
+            {[ }); ]}
+        </p>
+    </div>
+</div>

@@ -10,4 +10,7 @@ namespace "app.controllers", ->
             # "home.index": app.templates.home.index
 
         index: =>
-            @renderer.render_page "home/index"
+            @renderer.render_page "home/index",
+                authorized: ko.observable( false )
+                trendingTags: ko.observableArray([])
+                recentPosts: ko.observableArray([])
