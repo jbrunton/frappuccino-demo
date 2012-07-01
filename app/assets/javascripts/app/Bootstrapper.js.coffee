@@ -41,6 +41,7 @@ namespace "app", ->
             env.defineResource "blog_post", "blog_posts"
                 id: "number"
                 title: "string"
+                leader: "string"
                 description: "string"
                 address: "string"
                 content: "string"
