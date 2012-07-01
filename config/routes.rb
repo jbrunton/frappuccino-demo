@@ -2,4 +2,23 @@ BetterJsDemo::Application.routes.draw do
   
   root :to => 'home#index'
   
+  namespace :api do
+    resources :users
+    
+    resources :blogs do
+      resources :blog_posts
+    end
+    
+    resources :blog_posts
+    
+    namespace :meta do
+      resources :types
+    end
+
+    match 'auth' => 'auth#index'
+    
+    match 'search/tag/:tag' => 'search#tag'
+    match 'search/trending' => 'search#trending'
+  end
+  
 end

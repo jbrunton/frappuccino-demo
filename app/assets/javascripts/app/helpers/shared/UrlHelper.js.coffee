@@ -31,3 +31,6 @@ namespace "app.helpers.shared", ->
                 id = arguments[1]
             
             @url( collection_name, id, "edit" )
+            
+        email_url: ( email ) =>
+            "mailto:#{email}"
