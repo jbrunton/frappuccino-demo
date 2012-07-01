@@ -1,6 +1,6 @@
 namespace "app.controllers", ->
 
-    class @BlogPostssController extends core.ApplicationModule
+    class @BlogPostsController extends core.ApplicationModule
     
         routes:
             "blog_posts/:id/view":   "view_post"

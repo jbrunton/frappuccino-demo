@@ -7,6 +7,7 @@ class Api::BlogPostsController < ApiController
     end
   
     def show
+        sleep 1
         blog_post = BlogPost.find(params[:id])
         respond_with( blog_post )
     end
