@@ -7,6 +7,10 @@ body {
     margin-bottom: 0;
 }*/
 
+pre code {
+    border: none;
+}
+
 .leader {
     font-size: 16px;
     font-weight: 300;

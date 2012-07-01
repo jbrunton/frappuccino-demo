@@ -23,7 +23,8 @@ blog_posts_jbrunton = blog_jbrunton.blog_posts.create([
     {   title: 'Introduction',
         leader: "So what's this all about?",
         content:
-"This blogging platform is intended to demonstrate some useful techniques for writing large scale Javascript applications, and this blog charts the design decisions taken and challenges encountered along the way.
+<<-END
+This blogging platform is intended to showcase the better-js framework, which in turn is intended to demonstrate some useful techniques for writing large scale Javascript applications. This blog charts some of the significant design decisions taken and challenges encountered along the way.
 
 ## Design goals
 
@@ -32,18 +33,52 @@ There are a couple of key principles which guide the architecture of this applic
 1. Code should adhere to the [DRY principle](http://en.wikipedia.org/wiki/Don't_repeat_yourself).
 2. Authoring new pages, controllers, resources, etc. should require absolutely as little code as possible.
 
-As a consequence of point 1, the code is necessarily loosely-coupled, with most elements being completely reusable (eg, most templates and view models), or extremely lightweight (eg, controllers).  And in most cases, both.
+As a consequence of point 1, the code is necessarily loosely-coupled, with most elements being completely reusable (eg, most templates and view models), or extremely lightweight (eg, controllers).  And in most cases, both of these apply.
 
 ## Article series
 
 1. Introduction
-2. [Application Architecture](#posts/2/view)
-3. [Automatic Event Registration](#posts/3/view)"
+2. [Application Architecture](#blog_posts/2/view)
+3. [Automatic Event Registration](#blog_posts/3/view)
+END
     },
     {   title: 'Application Architecture',
         leader: 'A high-level description of the design patterns and architecture used.',
         content:
-"## The module pattern
+<<-END
+## Inspired by Rails
+
+The framework is opinionated, in many of the ways that Rails is.  It provides infrastructure to support MVC applications; helper classes (application-wide on a per-controller basis) to inject reusable functionality into the rendering context; a mechanism for transmitting RESTful resources to and from the server; and lots more besides.
+
+## Inspired by Prism
+
+There's also one key feature to the design which Rails doesn't do.  To ensure the facilitate the easy switching of such things as templating engines, to enable reuse of the same application code on both the client or the server (or different client platforms), and to facilitate easy testing, the framework provides a dependency injection container, which will dynamically resolve dependencies for a class based on its configuration.
+
+## The MVC parts
+
+The most recognizable features of the architecture are probably the controllers, which, as with Rails, should be succinct and concerned only with fetching the correct resources from the server and tying them to a view.  Here's a simple example:
+
+    class @UsersController extends core.ApplicationModule
+    
+        routes:
+            "users/:id/view":   "view_user"
+            "users/:id/edit":   "edit_user"
+            
+        edit_user: (id) =>
+            user = @env.create( "user" ).load id
+            @renderer.render_page "users/edit", user
+            
+        view_user: (id) =>
+            user = @env.create( "user" ).load id,
+                includes:
+                    blogs: true
+                    recent_posts: true
+ 
+            @renderer.render_page "users/view", user
+
+Pretty straightforward: it defines a couple of (client-side) routes; and actions for each which load a user resource from the server and render it using an appropriate template.  The ```view_user``` action also requests that the server follows the ```blogs``` and ```recent_posts``` associations and returns the results in its response.
+
+## The module pattern
 
 A module is simply an object which may be registered with the application, and which may listen for and raise events. A typical module might look like this:
 
@@ -57,7 +92,8 @@ A module is simply an object which may be registered with the application, and w
         }
     };
     
-A module may be registered with the application by use of the `app.registerModule()` method. This will make the application aware of the module, and will automatically subscribe the module to any of the events it provides handlers for."
+A module may be registered with the application by use of the `app.registerModule()` method. This will make the application aware of the module, and will automatically subscribe the module to any of the events it provides handlers for.
+END
     },
     {   title: 'Automatic Event Registration',
         leader: 'Beyond the mediator pattern.',
@@ -78,28 +114,23 @@ Each module defines handlers for the events it wishes to subscribe to.  A common
 
 Here's an example module definition:
 
-    app.core.define('MyModule', function(sandbox) {
-        return {
-            foo: function() {
-                sandbox.publish('fooHappened');
-            },
-            '@fooHappened': function() {
-                alert('Foo just happened!');
-            }
-        };
-    });
+    class @MyModule extends core.ApplicationModule
+    
+        foo: ->
+            @sandbox.publish 'fooHappened'
+            
+        @on 'fooHappened', ->
+            alert( 'Foo just happened' )
     
 In this example, the module defines a method ```foo```, which raises the _fooHappened_ event.  The ```@fooHappened``` handler is automatically subscribed to this event.
 
 The application core also allows communication between modules.  Events are scoped according to the publishing module - the full name of the event in the above example is actually _MyModule.fooHappened_.  Modules may - if granted permission - subscribe to events from other modules by specifying the event name in full:
 
-    app.core.define('MyModule', function(sandbox) {
+    class @MyModule extends core.ApplicationModule
         ...
-        '@AnotherModule.barHappened': function() {
-            alert('Bar just happened in AnotherModule');
-        }
+        @on 'AnotherModule.barHappened', ->
+            alert( 'Bar just happened in AnotherModule' )
         ...
-    });
 
 If a module attempts to subscribe to an event it doesn't have permission for, an error is raised.  See [link goes here] for more details about the permissions model."
     }
