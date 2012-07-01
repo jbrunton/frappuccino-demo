@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jbrunton/better-js-core.git
+  revision: 138b1b00fa53c02d825865f0b3a29b636b5454f7
+  specs:
+    better-js-core (0.0.1)
+      railties (~> 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -103,6 +110,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better-js-core!
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.6)

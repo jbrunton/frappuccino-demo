@@ -1,2 +1,12 @@
 <div data-region="master">
 </div>
+
+<%= render_templates :views => "home" %>
+
+<script type="text/javascript">
+    var _app = new app.Application();
+    _app.run(app.Bootstrapper);
+    
+    // TODO: move this to a Router module or something
+    Backbone.history.start();
+</script>
