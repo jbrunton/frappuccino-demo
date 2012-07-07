@@ -1,0 +1,51 @@
+<form class="form-horizontal">
+    <fieldset>
+    
+        {[ if (id()) { ]}
+            <legend>{{ screen_name() }}'s profile</legend>
+        {[ } else { ]}
+            <legend>Register</legend>
+        {[ } ]}
+        
+        <div class="control-group">
+            <label class="control-label" for="user_name">User name</label> 
+            <div class="controls">
+                <input type="text" class="input-large" data-bind="value: user_name">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="screen_name">Screen name</label> 
+            <div class="controls">
+                <input type="text" class="input-large" data-bind="value: screen_name">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="email">Email</label> 
+            <div class="controls">
+                <input type="text" class="input-large" id="email" data-bind="value: email">
+            </div>
+        </div>
+        
+        {[ if (id()) { ]}
+
+            <div class="control-group">
+                <label class="control-label" for="avatar_url">Avatar url</label> 
+                <div class="controls">
+                    <input type="text" class="input-large" id="avatar_url" data-bind="value: avatar_url">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="bio">Bio</label> 
+                <div class="controls">
+                    <textarea class="input-large content-small" data-bind="value: bio" />
+                </div>
+            </div>
+            
+        {[ } ]}
+        
+        <div class="form-actions">
+            <button class="btn btn-primary" data-bind="click: submit_action( $data )">Submit</button>
+            <button class="btn">Cancel</button>
+        </div>
+    </fieldset>
+</form>

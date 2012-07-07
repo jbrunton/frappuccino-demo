@@ -23,8 +23,9 @@ class Api::UsersController < ApiController
         user = User.find(params[:id])
         
         if user.update_attributes(params[:data])
-            logger.info "*** success - user: #{user.to_yaml}"
-            redirect_to :action => "show", :id => params[:id]
+            respond_to do |format|
+                format.json { render json: user }
+            end
         else
             logger.info "*** errors: #{object.errors}"
             # how to respond?
@@ -35,7 +36,9 @@ class Api::UsersController < ApiController
         user = User.new(params[:data])
         
         if user.save
-            redirect_to :action => 'show', :id => user.id
+            respond_to do |format|
+                format.json { render json: user }
+            end
         else
             logger.info "*** errors: #{object.errors}"
         end
