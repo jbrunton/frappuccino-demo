@@ -34,3 +34,8 @@ pre code {
 .profile .thumbnail {
     margin: 0 10px 0 0;
 }
+
+
+.auth-form {
+    padding: 10px;
+}

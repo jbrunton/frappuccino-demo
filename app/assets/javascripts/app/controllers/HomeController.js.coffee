@@ -11,6 +11,5 @@ namespace "app.controllers", ->
 
         index: =>
             @renderer.render_page "home/index",
-                authorized: ko.observable( false )
                 trendingTags: ko.observableArray([])
                 recentPosts: ko.observableArray([])

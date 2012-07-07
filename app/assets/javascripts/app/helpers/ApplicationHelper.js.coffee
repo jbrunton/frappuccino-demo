@@ -6,5 +6,5 @@ namespace "app.helpers", ->
 
         @include app.helpers.shared.UrlHelper
         @include app.helpers.shared.FormHelper
-    
+        @include app.helpers.shared.AuthHelper
     

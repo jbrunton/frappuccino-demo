@@ -15,10 +15,24 @@ class Api::BlogsController < ApiController
         blog = Blog.find(params[:id])
         
         if blog.update_attributes(params[:data])
-            redirect_to :action => "show", :id => params[:id]
+            respond_to do |format|
+                format.json { render json: blog }
+            end
         else
-            logger.info "*** errors: #{blog.errors}"
+            logger.info "*** errors: #{object.errors}"
             # how to respond?
+        end
+    end
+    
+    def create
+        blog = Blog.new(params[:data])
+        
+        if blog.save
+            respond_to do |format|
+                format.json { render json: blog }
+            end
+        else
+            logger.info "*** errors: #{object.errors}"
         end
     end
 end

@@ -1,0 +1,50 @@
+<form class="form-horizontal">
+    <fieldset>
+        {[ if (id()) { ]}
+            <legend data-bind="text: title" />
+        {[ } else { ]}
+            <legend>New blog</legend>
+        {[ } ]}
+
+        <div class="control-group">
+            <label class="control-label" for="user_name">title</label> 
+            <div class="controls">
+                <input type="text" class="input-xxlarge" data-bind="value: title">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="screen_name">description</label> 
+            <div class="controls">
+                <textarea class="input-xxlarge" data-bind="value: description" />
+            </div>
+        </div>
+
+        {[ if (id()) { ]}
+        
+            <div class="control-group">
+                <label class="control-label">posts</label>
+                <div class="controls">
+                    <button class="nav-to btn" href="/blogs/{{ id() }}/compose">New post</button>
+
+                    {[ _.each(blog_posts(), function(post) { ]}
+                        <hr />
+                        <h3><span data-bind="text: post.title" />
+                        <small class="pull-right">
+                            <a class="nav-to" data-bind="attr: { href: edit_url_for( post ) }">edit</a>
+                        </small>
+                        </h3>
+                        <p data-bind="text: post.leader" />
+                    {[ }); ]}
+
+                </div>
+            </div>
+        
+        {[ } ]}
+        
+        <div class="form-actions">
+            <button class="btn btn-primary" data-bind="click: submit_action( $data )">Submit</button>
+            <button class="btn nav-to" data-bind="attr: { href: url_for( $data ) }">Cancel</button>
+        </div>
+    </fieldset>
+</form>
