@@ -27,8 +27,8 @@
         <h2>Trending Tags</h2>
         <p class="leader">
             {[ _.each(trending_tags(), function(tag, index, tags) { ]}
-                <a class="nav-to" href="{{ '/search/tag/' + tag.tag }}">{{ tag.tag }}</a>
-                (<span data-bind="text: tag.count" />)
+                <a class="nav-to" href="{{ '/search/tag/' + tag.tag() }}">{{ tag.tag() }}</a>
+                (<span data-bind="text: tag.count()" />)
                 {[ if (index < tags.length - 1) { ]}
                     &sdot;
                 {[ } ]}

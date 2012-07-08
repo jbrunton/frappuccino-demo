@@ -11,6 +11,10 @@ namespace "app.controllers", ->
             env.load_collection "blog_post",
                 success: ( posts ) ->
                     self.recent_posts( posts )
+            env.load_collection "tag",
+                url: "api/search/trending",
+                success: ( tags ) ->
+                    self.trending_tags( tags )
             @
 
     class @HomeController extends core.ApplicationModule

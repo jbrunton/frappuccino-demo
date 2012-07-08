@@ -69,7 +69,7 @@ namespace "app", ->
                     blog_posts: "List[blog_post]"
                 attr_accessible: [ "title", "description", "content" ]
                 
-            env.defineResource "blog_post", "blog_posts"
+            env.defineResource "blog_post", "blog_posts",
                 attr:
                     id: "number"
                     title: "string"
@@ -82,6 +82,12 @@ namespace "app", ->
                     created_at: "datetime"
                     updated_at: "datetime"
                 attr_accessible: [ "title", "leader", "description", "address", "content", "tags" ]
+                
+            env.defineResource "tag", "tags",
+                attr:
+                    tag: "string"
+                    count: "number"
+                attr_accessible: [ "tag", "number" ]
                 
             container
             
