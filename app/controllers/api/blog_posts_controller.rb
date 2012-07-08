@@ -21,11 +21,7 @@ class Api::BlogPostsController < ApiController
             params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
         end
         
-        attr = safe_attr( BlogPost, params[:data] )
-        
-        logger.info "*** attr: #{attr.to_yaml}"
-        
-        if blog_post.update_attributes(attr)
+        if blog_post.update_attributes(params[:data])
             respond_to do |format|
                 format.json { render json: blog_post }
             end

@@ -1,5 +1,5 @@
 class BlogPost < ActiveRecord::Base
-    attr_accessible :title, :leader, :content
+    attr_accessible :title, :leader, :content, :tags
     
     belongs_to :blog
     has_many :tags
