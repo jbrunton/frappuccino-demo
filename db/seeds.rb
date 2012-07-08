@@ -22,6 +22,7 @@ blog_jbrunton = user_jbrunton.blogs.create(
 blog_posts_jbrunton = blog_jbrunton.blog_posts.create([
     {   title: 'Introduction',
         leader: "So what's this all about?",
+        tags: [ "CoffeeScript", "MVC", "DRY"].map{ |tag| Tag.create(tag: tag) },
         content:
 <<-END
 This blogging platform is intended to showcase the better-js framework, which in turn is intended to demonstrate some useful techniques for writing large scale Javascript applications. This blog charts some of the significant design decisions taken and challenges encountered along the way.
@@ -44,6 +45,7 @@ END
     },
     {   title: 'Application Architecture',
         leader: 'A high-level description of the design patterns and architecture used.',
+        tags: [ "CoffeeScript", "MVC", "Dependency Injection", "Module Pattern"].map{ |tag| Tag.create(tag: tag) },
         content:
 <<-END
 ## Inspired by Rails
@@ -97,6 +99,7 @@ END
     },
     {   title: 'Automatic Event Registration',
         leader: 'Beyond the mediator pattern.',
+        tags: [ "Mediator", "AER" ].map{ |tag| Tag.create(tag: tag) },
         content:
 "## Why not mediate?
 
