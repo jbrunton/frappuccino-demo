@@ -1,5 +1,19 @@
 namespace "app.controllers", ->
 
+    class HomeViewModel
+
+        constructor: ->
+            @trending_tags = ko.observableArray([])
+            @recent_posts = ko.observableArray([])
+            
+        load: ( env ) ->
+            self = @
+            env.load_collection "blog_post",
+                action: "recent_posts",
+                success: ( posts ) ->
+                    self.recent_posts( posts )
+            @
+
     class @HomeController extends core.ApplicationModule
     
         routes:
@@ -11,5 +25,4 @@ namespace "app.controllers", ->
 
         index: =>
             @renderer.render_page "home/index",
-                trendingTags: ko.observableArray([])
-                recentPosts: ko.observableArray([])
+                new HomeViewModel().load( @env )
