@@ -51,11 +51,16 @@
                 <h2>Recent Posts</h2>
                 <hr />
                 <div data-bind="template: { name: 'template:blog_posts/list', data: recent_posts() }"></div>
-            {[ } else { ]}
+            {[ } else if (authenticated()) { ]}
                 <!-- TODO: only show this if authenticated as user -->
                 <h2>Get Started</h2>
                 <hr />
-                <p>Time to get going.  Click here to start a new blog.</p>
+                <p>
+                    Time to get going.
+                    <a class="nav-to" href="{{ url_for( 'blogs', null, 'create' ) }}">
+                        Click here to start a new blog.
+                    </a>
+                </p>
             {[ } ]}
         </section>
     </div>
