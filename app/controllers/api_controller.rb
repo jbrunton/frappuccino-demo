@@ -17,6 +17,11 @@ class ApiController < ApplicationController
         includes
     end
     
+    def safe_attr( model_ty, attr )
+        accessible_attr = model_ty.attr_accessible[:default].select{ |a| !a.empty? }
+        attr.reject{ |a,_| !accessible_attr.include?( a ) }
+    end
+    
     def default_format_json
       request.format = "json" unless params[:format]
     end

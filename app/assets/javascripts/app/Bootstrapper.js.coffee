@@ -46,6 +46,7 @@ namespace "app", ->
                 address: "string"
                 content: "string"
                 blog_id: "number"
+                tags: "List[string]"
                 
             container
             

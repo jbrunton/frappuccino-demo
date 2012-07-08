@@ -17,11 +17,18 @@ class Api::BlogPostsController < ApiController
         blog_post.tags.destroy_all
         blog_post.save
         
-        params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
+        if params[:data][:tags]
+            params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
+        end
         
-        if blog_post.update_attributes(params[:data])
-            logger.info "*** success - blog_post: #{blog_post.to_yaml}"
-            redirect_to :action => "show", :id => params[:id]
+        attr = safe_attr( BlogPost, params[:data] )
+        
+        logger.info "*** attr: #{attr.to_yaml}"
+        
+        if blog_post.update_attributes(attr)
+            respond_to do |format|
+                format.json { render json: blog_post }
+            end
         else
             logger.info "*** errors: #{blog_post.errors}"
             # how to respond?
@@ -29,12 +36,18 @@ class Api::BlogPostsController < ApiController
     end
     
     def create
-        params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
+        logger.info "*** params: #{params.to_yaml}"
+        
+        if params[:data][:tags]
+            params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
+        end
         
         blog_post = BlogPost.new(params[:data])
         
         if blog_post.save
-            redirect_to :action => 'show', :id => blog_post.id
+            respond_to do |format|
+                format.json { render json: blog_post }
+            end
         else
             logger.info "*** errors: #{blog_post.errors}"
         end
