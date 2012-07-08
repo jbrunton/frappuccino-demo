@@ -23,7 +23,7 @@ class InitialSchema < ActiveRecord::Migration
     create_table :blog_posts do |t|
       t.string :title
       t.string :leader
-      t.string :content
+      t.text :content
       t.references :blog
       
       t.timestamps
