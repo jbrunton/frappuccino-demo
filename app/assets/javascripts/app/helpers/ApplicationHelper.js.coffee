@@ -17,3 +17,6 @@ namespace "app.helpers", ->
                         ( tag ) -> $.trim( tag )
                     ctx.tags( tags )
                 owner: ctx )
+                
+        format_date: (date) ->
+            $.datepicker.formatDate( "d MM, yy", date )

@@ -16,6 +16,31 @@ namespace "app", ->
             
             env.defineSimpleType "number"
             env.defineSimpleType "string"
+
+
+            formatDate = (date) ->
+                if date
+                    date.toString()
+                else
+                    null
+        
+            parseDate = (value) ->
+                # 2012-03-15T23:02:29Z
+                regex = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$/
+        
+                if (value)
+                    match = value.match(regex)
+                    new Date(
+                        parseInt(match[1]),
+                        parseInt(match[2]),
+                        parseInt(match[3]),
+                        parseInt(match[4]),
+                        parseInt(match[5]),
+                        parseInt(match[6]))
+                else
+                    null
+
+            env.defineSimpleType "datetime", formatDate, parseDate
             
             env.defineResource "user", "users",
                 attr:
@@ -54,6 +79,8 @@ namespace "app", ->
                     content: "string"
                     blog_id: "number"
                     tags: "List[string]"
+                    created_at: "datetime"
+                    updated_at: "datetime"
                 attr_accessible: [ "title", "leader", "description", "address", "content", "tags" ]
                 
             container
