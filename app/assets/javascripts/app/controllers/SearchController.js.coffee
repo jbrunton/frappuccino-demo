@@ -21,4 +21,4 @@ namespace "app.controllers", ->
             
         search_tag: ( tag ) =>
             @renderer.render_page "search/tag",
-                new TagSearchViewModel().search( tag, @env )
+                new TagSearchViewModel().search( decodeURI( tag ), @env )
