@@ -14,6 +14,6 @@ namespace "app.helpers", ->
                     ctx.tags().join(", ")
                 write: ( content ) ->
                     tags = _.map content.split(","),
-                        ( tag ) -> tag.replace( /\s/g, "" )
+                        ( tag ) -> $.trim( tag )
                     ctx.tags( tags )
                 owner: ctx )
