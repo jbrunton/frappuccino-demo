@@ -21,12 +21,12 @@
 <div class="row">
     <div class="span8">
         <h2>Recent Posts</h2>
-        <div data-bind="template: { name: 'template:blog_posts/list', data: recentPosts() }" />
+        <div data-bind="template: { name: 'template:blog_posts/list', data: recent_posts() }" />
     </div>
     <div class="span4">
         <h2>Trending Tags</h2>
         <p class="leader">
-            {[ _.each(trendingTags(), function(tag, index, tags) { ]}
+            {[ _.each(trending_tags(), function(tag, index, tags) { ]}
                 <a class="nav-to" href="{{ '/search/tag/' + tag.tag }}">{{ tag.tag }}</a>
                 (<span data-bind="text: tag.count" />)
                 {[ if (index < tags.length - 1) { ]}

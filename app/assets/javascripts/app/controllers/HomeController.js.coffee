@@ -9,7 +9,6 @@ namespace "app.controllers", ->
         load: ( env ) ->
             self = @
             env.load_collection "blog_post",
-                action: "recent_posts",
                 success: ( posts ) ->
                     self.recent_posts( posts )
             @
