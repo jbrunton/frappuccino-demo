@@ -45,3 +45,7 @@ pre code {
     margin-top: 45px;
     padding: 35px 0 36px;
 }
+
+span.tag {
+    white-space: nowrap;
+}
