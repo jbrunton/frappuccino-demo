@@ -26,7 +26,7 @@
                     <h4 data-bind="text: screen_name" />
                     <em><p data-bind="text: bio" /></em>
                 
-                {[ } else { ]}
+                {[ } else if (authenticated()) { ]}
                     
                     <p><a class="nav-to" data-bind="attr: { href: edit_url_for( $data ) }">Tell the world a little about yourself</a></p>
                 
