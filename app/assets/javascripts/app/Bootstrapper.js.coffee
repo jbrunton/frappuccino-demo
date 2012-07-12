@@ -3,8 +3,8 @@ namespace "app", ->
     class @Bootstrapper extends core.Bootstrapper
     
         # TODO: remove app param, and register Renderer as a singleton type
-        configure_container: ->
-            container = super()
+        configure_container: ( application ) ->
+            container = super( application )
             
             # container.registerClass "Application", app.Application, singleton: true
             container.register_class "Renderer", infrastructure.KoRenderer, singleton: true
