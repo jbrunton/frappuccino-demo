@@ -9,13 +9,13 @@ namespace "app.controllers", ->
             
         create_blog: (id) =>    
             # TODO: user_id = @sandbox.resolve_module("AuthModule").current_user().id();
-            blog = @env.create( "blog" )
+            blog = @create_model( "blog" )
             @renderer.render_page "blogs/edit", blog
 
         edit_blog: (id) =>
-            blog = @env.create( "blog" ).load id
+            blog = @create_model( "blog" ).load id
             @renderer.render_page "blogs/edit", blog
             
         view_blog: (id) =>
-            blog = @env.create( "blog" ).load id
+            blog = @create_model( "blog" ).load id
             @renderer.render_page "blogs/view", blog
