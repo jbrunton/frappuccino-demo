@@ -41,54 +41,7 @@ namespace "app", ->
                     null
 
             env.defineSimpleType "datetime", formatDate, parseDate
-            
-            env.defineResource "user", "users",
-                attr:
-                    id: "number"
-                    screen_name: "string"
-                    user_name: "string"
-                    email: "string"
-                    bio: "string"
-                    avatar_url: "string"
-                    blogs: "List[blog]"
-                    recent_posts: "List[blog_post]"
-                attr_accessible: [ "screen_name", "user_name", "email", "bio", "avatar_url" ]
-                
-            env.defineResource "photo", "photos",
-                attr:
-                    id: "number"
-                    url: "string"
-                attr_accessible: [ "url" ]
-                
-            env.defineResource "blog", "blogs",
-                attr:
-                    id: "number"
-                    title: "string"
-                    description: "string"
-                    content: "string"
-                    blog_posts: "List[blog_post]"
-                attr_accessible: [ "title", "description", "content" ]
-                
-            env.defineResource "blog_post", "blog_posts",
-                attr:
-                    id: "number"
-                    title: "string"
-                    leader: "string"
-                    description: "string"
-                    address: "string"
-                    content: "string"
-                    blog_id: "number"
-                    tags: "List[string]"
-                    created_at: "datetime"
-                    updated_at: "datetime"
-                attr_accessible: [ "title", "leader", "description", "address", "content", "tags" ]
-                
-            env.defineResource "tag", "tags",
-                attr:
-                    tag: "string"
-                    count: "number"
-                attr_accessible: [ "tag", "number" ]
-                
+                                            
             container
             
         initialize: ->
