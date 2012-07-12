@@ -7,18 +7,20 @@ namespace "app.controllers", ->
             "users/:id/view":   "view_user"
             "users/:id/edit":   "edit_user"
             
-        create_user: =>
+        create_and_submit_user: ( user ) =>
             router = @router
             auth_module = @sandbox.resolve_module( "AuthModule" )
 
-            user = @create_model( "user" )
+            user.save success: ( _user ) ->
+                auth_module.authenticate user.user_name(), ""
+                router.navigate( "/users/" + _user.id() + "/view" )
+                
+            
+        create_user: =>
+            router = @router
 
-            # TODO: this is kinda messy
-            user.create_user = ->
-                user.save success: ( _user ) ->
-                    auth_module.authenticate user.user_name(), ""
-                    router.navigate( "/users/" + _user.id() + "/view" )
-                    
+            user = _.extend @create_model( "user" ),
+                submit: @create_and_submit_user
             
             @renderer.render_page "users/edit", user
             
