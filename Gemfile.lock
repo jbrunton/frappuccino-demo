@@ -1,5 +1,6 @@
-PATH
-  remote: lib/gems/better-js-core
+GIT
+  remote: git://github.com/jbrunton/better-js-core.git
+  revision: e928fce9039533a594f5d84bb7f9a46075331e5f
   specs:
     better-js-core (0.0.1)
       railties (~> 3.1)
