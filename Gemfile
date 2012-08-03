@@ -12,8 +12,15 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'better-js-core',     :git => 'git://github.com/jbrunton/better-js-core.git'
-# gem 'better-js-core', :path => 'lib/gems/better-js-core'
+# for jasmine
+group :development, :test do
+  gem 'jasminerice'
+  gem 'guard-jasmine'
+  gem 'jasmine-stories'
+end
+
+# gem 'better-js-core',     :git => 'git://github.com/jbrunton/better-js-core.git'
+gem 'better-js-core', :path => 'lib/gems/better-js-core'
 
 # Gems used only for assets and not required
 # in production environments by default.

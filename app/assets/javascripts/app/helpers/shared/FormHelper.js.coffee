@@ -1,8 +1,6 @@
 namespace "app.helpers.shared", ->
 
-    class @FormHelper extends core.Mixable
-    
-        @include core.DependentMixin
+    class @FormHelper extends core.DependentObject
         @dependency router: "Router"
     
         submit_action: (resource) =>

@@ -17,4 +17,5 @@ namespace "app.controllers", ->
             
         view_post: (id) =>
             post = @create_model( "blog_post" ).load id
+            core.decorate( post, app.decorators.BlogPostDecorator )
             @renderer.render_page "blog_posts/view", post

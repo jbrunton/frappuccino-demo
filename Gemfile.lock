@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/jbrunton/better-js-core.git
-  revision: e928fce9039533a594f5d84bb7f9a46075331e5f
+PATH
+  remote: lib/gems/better-js-core
   specs:
     better-js-core (0.0.1)
       railties (~> 3.1)
@@ -37,6 +36,8 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.0)
+    childprocess (0.3.3)
+      ffi (~> 1.0.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -47,13 +48,32 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ffi (1.0.11)
+    guard (1.2.1)
+      listen (>= 0.4.2)
+      thor (>= 0.14.6)
+    guard-jasmine (1.5.0)
+      childprocess
+      guard (>= 1.1.0)
+      multi_json
+      thor
+    haml (3.1.6)
     hike (1.2.1)
     i18n (0.6.0)
+    jasmine-stories (0.0.1)
+      haml
+    jasminerice (0.0.9)
+      coffee-rails
+      haml
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.7.3)
+    listen (0.4.7)
+      rb-fchange (~> 0.0.5)
+      rb-fsevent (~> 0.9.1)
+      rb-inotify (~> 0.8.8)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -85,6 +105,11 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (0.9.2.2)
+    rb-fchange (0.0.5)
+      ffi
+    rb-fsevent (0.9.1)
+    rb-inotify (0.8.8)
+      ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
     sass (3.1.20)
@@ -113,6 +138,9 @@ PLATFORMS
 DEPENDENCIES
   better-js-core!
   coffee-rails (~> 3.2.1)
+  guard-jasmine
+  jasmine-stories
+  jasminerice
   jquery-rails
   pg
   rails (= 3.2.6)
