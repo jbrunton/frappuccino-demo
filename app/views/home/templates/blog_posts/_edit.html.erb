@@ -2,10 +2,13 @@
     <fieldset>
         <legend>Edit Post</legend>
         
-        <div class="control-group" data-bind="css: { error: errors.is_valid('title') }">
+        <div class="control-group" data-bind="css: { error: !title.is_valid() }">
             <label class="control-label" for="user_name">title</label> 
             <div class="controls">
                 <input type="text" class="input-xxlarge" data-bind="value: title">
+                {[ _.each(title.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
             </div>
         </div>
         <div class="control-group">

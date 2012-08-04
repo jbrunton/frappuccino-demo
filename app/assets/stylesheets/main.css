@@ -7,6 +7,10 @@ body {
     margin-bottom: 0;
 }*/
 
+p.error {
+    color: #B94A48;
+}
+
 pre code {
     border: none;
 }
