@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20120308221311) do
   create_table "blog_posts", :force => true do |t|
     t.string   "title"
     t.string   "leader"
-    t.string   "content"
+    t.text     "content"
     t.integer  "blog_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
