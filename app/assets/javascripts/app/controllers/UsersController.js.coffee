@@ -10,10 +10,11 @@ namespace "app.controllers", ->
         create_and_submit_user: ( user ) =>
             router = @router
             auth_module = @sandbox.resolve_module( "AuthModule" )
-
-            user.save success: ( _user ) ->
-                auth_module.authenticate user.user_name(), ""
-                router.navigate( "/users/" + _user.id() + "/view" )
+            
+            if user.is_valid()
+                user.save success: ( _user ) ->
+                    auth_module.authenticate user.user_name(), ""
+                    router.navigate( "/users/" + _user.id() + "/view" )
                 
             
         create_user: =>

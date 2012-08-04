@@ -7,22 +7,31 @@
             <legend>Register</legend>
         {[ } ]}
         
-        <div class="control-group">
+        <div class="control-group" data-bind="css: { error: !user_name.is_valid() }">
             <label class="control-label" for="user_name">User name</label> 
             <div class="controls">
                 <input type="text" class="input-large" data-bind="value: user_name">
+                {[ _.each(user_name.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group" data-bind="css: { error: !screen_name.is_valid() }">
             <label class="control-label" for="screen_name">Screen name</label> 
             <div class="controls">
                 <input type="text" class="input-large" data-bind="value: screen_name">
+                {[ _.each(screen_name.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group" data-bind="css: { error: !email.is_valid() }">
             <label class="control-label" for="email">Email</label> 
             <div class="controls">
                 <input type="text" class="input-large" id="email" data-bind="value: email">
+                {[ _.each(email.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
             </div>
         </div>
         
