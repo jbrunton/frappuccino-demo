@@ -5,7 +5,9 @@ namespace "app.helpers.shared", ->
     
         submit_action: (resource) =>
             success = (res) => @router.navigate( @url_for( res ) ) 
-            -> @save success: success
+            ->
+                if resource.is_valid()
+                    @save success: success
 
         # TODO: put this in a separate helper!            
         start_slideshow: ->
