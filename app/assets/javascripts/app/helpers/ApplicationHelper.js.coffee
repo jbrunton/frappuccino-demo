@@ -2,8 +2,7 @@
 
 namespace "app.helpers", ->
 
-    class @ApplicationHelper extends core.Mixable
-
+    class @ApplicationHelper extends core.BaseObject
         @include app.helpers.shared.UrlHelper
         @include app.helpers.shared.FormHelper
         @include app.helpers.shared.AuthHelper
@@ -11,7 +10,7 @@ namespace "app.helpers", ->
         tags_content_for: ( ctx ) ->
             ko.computed(
                 read: ->
-                    ctx.tags().join(", ")
+                    ctx?.tags()?.join(", ")
                 write: ( content ) ->
                     tags = _.map content.split(","),
                         ( tag ) -> $.trim( tag )

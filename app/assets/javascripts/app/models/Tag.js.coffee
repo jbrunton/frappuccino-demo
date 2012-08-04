@@ -1,9 +1,7 @@
 namespace "app.models", ->
 
     class @Tag extends core.Model
-        @attr {
-            tag: "string"
-            count: "number"
-        }
+        @attr tag: "string"
+        @attr count: "number"
         
-        @attr_accessible "tag", "number"
+        @attr_accessible "tag", "count"

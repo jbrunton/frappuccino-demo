@@ -1,8 +1,6 @@
 namespace "app.helpers.shared", ->
 
-    class @AuthHelper extends core.Mixable
-        @include core.EventsMixin
-        
+    class @AuthHelper extends core.EventObject
         authenticated: ko.observable( false )
         current_user: ko.observable()
 

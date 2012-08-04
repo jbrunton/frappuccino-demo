@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-    def render_templates( opts = {} )
+    def load_templates( opts = {} )
         templates = []
         
         if opts[:views].nil?
@@ -25,10 +25,19 @@ module ApplicationHelper
                 tmpl_name = "#{matches[2]}#{matches[3]}"
                 tmpl_content = render :partial => "#{tmpl_views_dir}/templates/#{tmpl_name}"
                 
-                templates << "<script type='text/template' id='template:#{tmpl_name}'>#{tmpl_content}</script>"
+                templates << { :id => "template:#{tmpl_name}", :content => tmpl_content }
             end
         end
+        
+        templates
+    end
 
+    def render_templates( opts = {} )
+        templates = load_templates( opts )
+        templates = templates.collect do |t|
+            "<script type='text/template' id='#{t[:id]}'>#{t[:content]}</script>"
+        end
+        
         raw( templates.join )
     end
     

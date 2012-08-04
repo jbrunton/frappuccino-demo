@@ -19,11 +19,11 @@
 </div>
 
 <div class="row">
-    <div class="span8">
+    <div class="span8" id="recent-posts">
         <h2>Recent Posts</h2>
         <div id="recent-posts" data-bind="template: { name: 'template:blog_posts/list', data: recent_posts() }" />
     </div>
-    <div class="span4">
+    <div class="span4" id="trending-tags">
         <h2>Trending Tags</h2>
         <p class="leader">
             {[ _.each(trending_tags(), function(tag, index, tags) { ]}
