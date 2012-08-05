@@ -34,6 +34,15 @@
                 {[ }); ]}
             </div>
         </div>
+        <div class="control-group" data-bind="css: { error: !email_confirmation.is_valid() }">
+            <label class="control-label" for="email">Confirm Email</label> 
+            <div class="controls">
+                <input type="text" class="input-large" id="email" data-bind="value: email_confirmation">
+                {[ _.each(email_confirmation.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
+            </div>
+        </div>
         
         {[ if (id()) { ]}
 
