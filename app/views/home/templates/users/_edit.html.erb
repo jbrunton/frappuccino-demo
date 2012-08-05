@@ -7,15 +7,6 @@
             <legend>Register</legend>
         {[ } ]}
         
-        <div class="control-group" data-bind="css: { error: !user_name.is_valid() }">
-            <label class="control-label" for="user_name">User name</label> 
-            <div class="controls">
-                <input type="text" class="input-large" data-bind="value: user_name">
-                {[ _.each(user_name.errors(), function(msg) { ]}
-                    <p class="error">{{ msg }}</p>
-                {[ }); ]}
-            </div>
-        </div>
         <div class="control-group" data-bind="css: { error: !screen_name.is_valid() }">
             <label class="control-label" for="screen_name">Screen name</label> 
             <div class="controls">
@@ -35,7 +26,7 @@
             </div>
         </div>
         <div class="control-group" data-bind="css: { error: !email_confirmation.is_valid() }">
-            <label class="control-label" for="email">Confirm Email</label> 
+            <label class="control-label" for="email">Confirm email</label> 
             <div class="controls">
                 <input type="text" class="input-large" id="email" data-bind="value: email_confirmation">
                 {[ _.each(email_confirmation.errors(), function(msg) { ]}
