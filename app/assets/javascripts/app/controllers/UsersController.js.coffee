@@ -11,7 +11,7 @@ namespace "app.controllers", ->
             router = @router
             auth_module = @sandbox.resolve_module( "AuthModule" )
             
-            if user.is_valid()
+            if user.validate()
                 user.save success: ( _user ) ->
                     auth_module.authenticate user.user_name(), ""
                     router.navigate( "/users/" + _user.id() + "/view" )

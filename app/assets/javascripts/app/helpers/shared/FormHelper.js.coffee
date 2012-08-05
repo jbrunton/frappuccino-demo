@@ -6,7 +6,7 @@ namespace "app.helpers.shared", ->
         submit_action: (resource) =>
             success = (res) => @router.navigate( @url_for( res ) ) 
             ->
-                if resource.is_valid()
+                if resource.validate()
                     @save success: success
 
         # TODO: put this in a separate helper!            
