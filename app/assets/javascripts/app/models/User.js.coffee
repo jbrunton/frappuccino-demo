@@ -13,7 +13,10 @@ namespace "app.models", ->
         
         @validates "user_name", format: { with: /ababa/ }
         
-        @validates "email", presence: true, email: true, confirmation: true
+        @validates "email",
+            presence: true,
+            email: true,
+            confirmation: { if: (user) -> user.is_new_record() }
         @validates "screen_name", presence: true, length: { min: 3, max: 8 }
         
         @attr_accessible "screen_name", "user_name", "email", "bio", "avatar_url"
