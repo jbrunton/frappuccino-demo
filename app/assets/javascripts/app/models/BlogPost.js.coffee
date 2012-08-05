@@ -12,9 +12,8 @@ namespace "app.models", ->
         @attr tags: "List[string]"
         @attr created_at: "datetime"
         @attr updated_at: "datetime"
-        @attr tags: "List[string]"
         
         @validates "title", presence: true
         
-        @attr_accessible "title", "leader", "description", "address", "content", "tags", "created_at", "tags"
+        @attr_accessible "title", "leader", "description", "address", "content", "tags", "created_at"
                 
