@@ -25,11 +25,20 @@
                 {[ }); ]}
             </div>
         </div>
-        <div class="control-group" data-bind="css: { error: !email_confirmation.is_valid() }">
-            <label class="control-label" for="email">Confirm email</label> 
+        <div class="control-group" data-bind="css: { error: !password.is_valid() }">
+            <label class="control-label" for="password">Password</label> 
             <div class="controls">
-                <input type="text" class="input-large" id="email" data-bind="value: email_confirmation">
-                {[ _.each(email_confirmation.errors(), function(msg) { ]}
+                <input type="password" class="input-large" id="email" data-bind="value: password">
+                {[ _.each(password.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
+            </div>
+        </div>
+        <div class="control-group" data-bind="css: { error: !password_confirmation.is_valid() }">
+            <label class="control-label" for="password_confirmation">Confirm password</label> 
+            <div class="controls">
+                <input type="password" class="input-large" id="email" data-bind="value: password_confirmation">
+                {[ _.each(password_confirmation.errors(), function(msg) { ]}
                     <p class="error">{{ msg }}</p>
                 {[ }); ]}
             </div>
