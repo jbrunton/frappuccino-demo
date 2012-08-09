@@ -8,10 +8,10 @@ namespace "app.controllers", ->
             
         load: ( env ) ->
             self = @
-            env.load_collection "blog_post",
+            env.load_collection "BlogPost",
                 success: ( posts ) ->
                     self.recent_posts( posts )
-            env.load_collection "tag",
+            env.load_collection "Tag",
                 url: "api/search/trending",
                 success: ( tags ) ->
                     self.trending_tags( tags )

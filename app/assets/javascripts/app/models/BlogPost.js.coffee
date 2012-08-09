@@ -2,18 +2,18 @@ namespace "app.models", ->
 
     class @BlogPost extends core.Model
     
-        @attr id: "number"
-        @attr title: "string"
-        @attr leader: "string"
-        @attr description: "string"
-        @attr address: "string"
-        @attr content: "string"
-        @attr blog_id: "number"
-        @attr tags: "List[string]"
-        @attr created_at: "datetime"
-        @attr updated_at: "datetime"
+        @attr "id"
+        @attr "title"
+        @attr "leader"
+        @attr "description"
+        @attr "address"
+        @attr "content"
+        @attr "created_at", class_name: "datetime"
+        @attr "updated_at", class_name: "datetime"
         
+        @has_many "tags", class_name: "string"
+
         @validates "title", presence: true
         
-        @attr_accessible "title", "leader", "description", "address", "content", "tags", "created_at"
+        @attr_serialize "title", "leader", "description", "address", "content", "tags", "created_at"
                 

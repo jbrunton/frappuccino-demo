@@ -1,10 +1,8 @@
 namespace "app.models", ->
 
-    class @User extends core.Model
+    class @Photo extends core.Model
     
-        @attr {
-            id: "number"
-            url: "string"
-        }
+        @attr "id"
+        @attr "url"
         
-        @attr_accessible "url"
+        @attr_serialize "url"

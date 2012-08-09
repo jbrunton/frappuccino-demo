@@ -1,7 +1,7 @@
 namespace "app.models", ->
 
     class @Tag extends core.Model
-        @attr tag: "string"
-        @attr count: "number"
+        @attr "tag"
+        @attr "count"
         
-        @attr_accessible "tag", "count"
+        @attr_serialize "tag", "count"
