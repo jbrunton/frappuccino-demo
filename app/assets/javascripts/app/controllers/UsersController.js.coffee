@@ -20,7 +20,7 @@ namespace "app.controllers", ->
         create_user: =>
             router = @router
 
-            user = _.extend @create_model( "user" ),
+            user = _.extend @create_model( "User" ),
                 submit: @create_and_submit_user
             
             @renderer.render_page "users/edit", user
