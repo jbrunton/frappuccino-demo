@@ -9,7 +9,7 @@ namespace "app.controllers", ->
             
         signin: ->
             router = @router
-            auth_module = @sandbox.resolve_module( "AuthModule" )
+            auth_module = @sandbox.resolve_module( "auth_module" )
             auth_module.authenticate @user_name(), @password(),
                 success: ( user ) ->
                     router.navigate( "/" )
@@ -25,6 +25,6 @@ namespace "app.controllers", ->
             @renderer.render_page "auth/signin", auth
             
         sign_out: =>
-            auth_module = @sandbox.resolve_module( "AuthModule" )
+            auth_module = @sandbox.resolve_module( "auth_module" )
             auth_module.sign_out()
             @router.navigate "/"

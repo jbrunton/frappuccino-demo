@@ -8,7 +8,7 @@ namespace "app.controllers", ->
         search: ( tag, env ) ->
             self = @
             @tag( tag )
-            env.load_collection "blog_post",
+            env.load_collection "BlogPost",
                 url: "api/search/tag/#{tag}",
                 success: ( posts ) ->
                     self.results( posts )
