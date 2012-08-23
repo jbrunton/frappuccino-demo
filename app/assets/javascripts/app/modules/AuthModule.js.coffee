@@ -7,7 +7,7 @@ namespace "app.modules", ->
     
         drop_cookie: ( user ) ->
             auth_token =
-                user_name: user.user_name
+                email: user.email
                 user_id: user.id
     
             $.cookie "auth_user",
@@ -24,7 +24,7 @@ namespace "app.modules", ->
             @drop_cookie( data )
             @sandbox.publish "AuthModule.success", @current_user()
     
-        authenticate: ( user_name, password, opts ) ->
+        authenticate: ( email, password, opts ) ->
             self = @
             
             success = ( user ) ->
@@ -32,7 +32,7 @@ namespace "app.modules", ->
                 opts?.success?( user )
         
             $.ajax
-                url: "/api/auth?user_name=#{user_name}&password=#{password}"
+                url: "/api/auth?email=#{email}&password=#{password}"
                 success: success
                 dataType: 'json'
 

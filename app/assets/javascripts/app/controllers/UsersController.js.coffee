@@ -13,7 +13,7 @@ namespace "app.controllers", ->
             
             if user.validate()
                 user.save success: ( _user ) ->
-                    auth_module.authenticate user.user_name(), ""
+                    auth_module.authenticate user.email(), ""
                     router.navigate( "/users/" + _user.id() + "/view" )
                 
             
