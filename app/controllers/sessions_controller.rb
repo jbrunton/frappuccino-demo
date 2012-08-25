@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
     if @authorization
       user = @authorization.user
     else
-      user = User.new :screen_name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
+      # TODO: unsuitable for production, but makes it easier to match up facebook auths with seed data
+      user = User.where(:email => auth_hash["info"]["email"]).first
+      user = create_user_from_hash(auth_hash) unless user
       user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
       user.save
     end
@@ -29,5 +31,10 @@ class SessionsController < ApplicationController
     cookies.delete :screen_name
     cookies.delete :user_id
     redirect_to root_path
+  end
+  
+  private
+  def create_user_from_hash(auth_hash)
+    User.new :screen_name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
   end
 end

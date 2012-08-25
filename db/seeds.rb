@@ -8,7 +8,7 @@
 
 user_jbrunton = User.create(
     screen_name: 'John Brunton',
-    email: 'jbrunton@zipcar.co.uk',
+    email: 'john_brunton@hotmail.co.uk',
     bio: "software engineer for Zipcar UK, with interests in art, technology, politics, and international development.",
     avatar_url: 'https://twimg0-a.akamaihd.net/profile_images/1435862198/Screen_shot_2011-07-10_at_6.41.49_PM_reasonably_small.png'
 )
