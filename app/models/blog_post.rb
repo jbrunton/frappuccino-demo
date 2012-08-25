@@ -1,8 +1,10 @@
 class BlogPost < ActiveRecord::Base
-    attr_accessible :title, :leader, :content, :tags, :created_at
-    
     belongs_to :blog
     has_many :tags
+    
+    attr_accessible :title, :leader, :content, :tags, :created_at, :tags_attributes
+    
+    accepts_nested_attributes_for :tags
     
     def serializable_hash(options = nil)
         blog_post = super(options ||= {})

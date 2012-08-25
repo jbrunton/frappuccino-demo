@@ -17,9 +17,11 @@ class Api::BlogPostsController < ApiController
         blog_post.tags.destroy_all
         blog_post.save
         
-        if params[:data][:tags]
-            params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
+        if params[:data][:tags_attributes]
+            params[:data][:tags_attributes] = params[:data][:tags_attributes].collect{ |tag| { :tag => tag } }
         end
+        
+        logger.info "*** params[:data]: #{params[:data]}"
         
         if blog_post.update_attributes(params[:data])
             respond_to do |format|
