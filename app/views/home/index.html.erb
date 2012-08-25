@@ -4,8 +4,10 @@
 <%= render_templates :views => "home" %>
 
 <script type="text/javascript">
-    // hack for facebook, which appends unnecessary '#_=_' to the url after authenticating
-    window.location.hash = "";
+    // hack for facebook, which appends an unnecessary '#_=_' to the url after authenticating
+    if (window.location.href.indexOf('#_=_') > 0) {
+        window.location = window.location.href.replace(/#.*/, '');
+    }
 
     var _app = new app.Application();
     _app.run(new app.Bootstrapper);
