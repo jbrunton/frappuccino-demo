@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-    attr_accessible :user_name, :screen_name, :email, :password, :bio, :avatar_url
+    attr_accessible :screen_name, :email, :password, :bio, :avatar_url
       
     has_many :blogs
     has_many :recent_posts, :through => :blogs, :source => :blog_posts
+    
+    has_many :authorizations
+    validates :screen_name, :email, :presence => true
 
     def serializable_hash(options = nil)
         user = super(options ||= {})

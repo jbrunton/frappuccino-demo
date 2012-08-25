@@ -12,6 +12,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # for jasmine
 group :development, :test do
   gem 'jasminerice'

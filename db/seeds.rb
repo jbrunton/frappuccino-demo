@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user_jbrunton = User.create(
-    user_name: 'jbrunton',
     screen_name: 'John Brunton',
     email: 'jbrunton@zipcar.co.uk',
     bio: "software engineer for Zipcar UK, with interests in art, technology, politics, and international development.",

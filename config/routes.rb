@@ -1,5 +1,11 @@
 BetterJsDemo::Application.routes.draw do
   
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/failure"
+
   root :to => 'home#index'
   
   namespace :api do
@@ -21,4 +27,8 @@ BetterJsDemo::Application.routes.draw do
     match 'search/trending' => 'search#trending'
   end
   
+  get '/login', :to => 'sessions#new', :as => :login
+  get '/logout', :to => 'sessions#destroy'
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/failure', :to => 'sessions#failure'
 end
