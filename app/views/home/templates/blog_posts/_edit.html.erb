@@ -31,7 +31,7 @@
         </div>
         <div class="form-actions">
             <button data-bind="click: submit_action( $data )" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
+            <button class="btn nav-to" data-bind="attr: { href: url_for( $data ) }">Cancel</button>
         </div>
     </fieldset>
 </form>
