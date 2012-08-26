@@ -7,7 +7,13 @@ class Api::BlogsController < ApiController
     end
   
     def show
-        blog = Blog.find(params[:id])
+        if params[:includes]
+            includes = includes_hash( params[:includes] )
+        else
+            includes = {}
+        end
+
+        blog = Blog.includes(includes).find(params[:id])
         respond_with( blog )
     end
     

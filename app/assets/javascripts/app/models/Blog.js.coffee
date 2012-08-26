@@ -7,6 +7,7 @@ namespace "app.models", ->
         @attr "description"
         @attr "content"
         @has_many "blog_posts"
+        @belongs_to "user"
         
         @attr_serialize "title", "description", "content"
         

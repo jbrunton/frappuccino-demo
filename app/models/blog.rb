@@ -9,8 +9,12 @@ class Blog < ActiveRecord::Base
         
         blog[:type_name] = self.class.name.underscore
         
-        if !self.blog_posts.nil?
+        if self.blog_posts.loaded?
             blog[:blog_posts] = self.blog_posts
+        end
+        
+        if self.association(:user).loaded?
+            blog[:user] = self.user
         end
         
         blog
