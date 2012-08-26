@@ -15,6 +15,10 @@ class BlogPost < ActiveRecord::Base
             blog_post[:tags] = self.tags.collect{ |tag| tag.tag }
         end
         
+        if self.association(:blog).loaded?
+            blog_post[:blog] = self.blog
+        end
+        
         blog_post
     end
 end

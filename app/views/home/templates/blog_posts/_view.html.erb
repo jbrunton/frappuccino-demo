@@ -5,6 +5,7 @@
             <a class="nav-to" data-bind="attr: { href: edit_url_for( $data ) }">edit</a>
         </small>
     </h1>
+    <p class="lead">by <a class="nav-to" data-bind="attr: { href: url_for( blog().user() ) }, text: blog().user().screen_name()" /></p>
 </div>
 
 <div class="row">

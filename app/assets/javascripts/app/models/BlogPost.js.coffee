@@ -12,6 +12,7 @@ namespace "app.models", ->
         @attr "updated_at", class_name: "datetime"
         
         @has_many "tags", class_name: "string"
+        @belongs_to "blog"
 
         @validates "title", presence: true
         
