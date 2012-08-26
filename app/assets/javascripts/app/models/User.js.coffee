@@ -8,12 +8,10 @@ namespace "app.models", ->
         @attr "bio"
         @attr "avatar_url"
         @has_many "blogs"
-        @attr "password"
 
         @has_many "recent_posts", class_name: "BlogPost"
         
         @validates "email", presence: true, email: true
         @validates "screen_name", presence: true
-        @validates "password", presence: true, length: { min: 5 }, confirmation: true
         
         @attr_serialize "screen_name", "email", "bio", "avatar_url"

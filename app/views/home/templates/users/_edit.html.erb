@@ -1,11 +1,7 @@
 <form class="form-horizontal">
     <fieldset>
     
-        {[ if (id()) { ]}
-            <legend>{{ screen_name() }}'s profile</legend>
-        {[ } else { ]}
-            <legend>Register</legend>
-        {[ } ]}
+        <legend>{{ screen_name() }}'s profile</legend>
         
         <div class="control-group" data-bind="css: { error: !screen_name.is_valid() }">
             <label class="control-label" for="screen_name">Screen name</label> 
@@ -24,49 +20,22 @@
                     <p class="error">{{ msg }}</p>
                 {[ }); ]}
             </div>
-        </div>
-        <div class="control-group" data-bind="css: { error: !password.is_valid() }">
-            <label class="control-label" for="password">Password</label> 
+        </div>        
+        <div class="control-group">
+            <label class="control-label" for="avatar_url">Avatar url</label> 
             <div class="controls">
-                <input type="password" class="input-large" id="email" data-bind="value: password">
-                {[ _.each(password.errors(), function(msg) { ]}
-                    <p class="error">{{ msg }}</p>
-                {[ }); ]}
+                <input type="text" class="input-large" id="avatar_url" data-bind="value: avatar_url">
             </div>
         </div>
-        <div class="control-group" data-bind="css: { error: !password_confirmation.is_valid() }">
-            <label class="control-label" for="password_confirmation">Confirm password</label> 
+        <div class="control-group">
+            <label class="control-label" for="bio">Bio</label> 
             <div class="controls">
-                <input type="password" class="input-large" id="email" data-bind="value: password_confirmation">
-                {[ _.each(password_confirmation.errors(), function(msg) { ]}
-                    <p class="error">{{ msg }}</p>
-                {[ }); ]}
+                <textarea class="input-large content-small" data-bind="value: bio" />
             </div>
         </div>
-        
-        {[ if (id()) { ]}
-
-            <div class="control-group">
-                <label class="control-label" for="avatar_url">Avatar url</label> 
-                <div class="controls">
-                    <input type="text" class="input-large" id="avatar_url" data-bind="value: avatar_url">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="bio">Bio</label> 
-                <div class="controls">
-                    <textarea class="input-large content-small" data-bind="value: bio" />
-                </div>
-            </div>
             
-        {[ } ]}
-        
         <div class="form-actions">
-            {[ if (authenticated()) { ]}
-                <button class="btn btn-primary" data-bind="click: submit_action( $data )">Submit</button>
-            {[ } else { ]}
-                <button class="btn btn-primary" data-bind="click: submit">Submit</button>
-            {[ } ]}
+            <button class="btn btn-primary" data-bind="click: submit_action( $data )">Submit</button>
             <button class="btn">Cancel</button>
         </div>
     </fieldset>

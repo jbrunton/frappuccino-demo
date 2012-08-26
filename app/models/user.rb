@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    attr_accessible :screen_name, :email, :password, :bio, :avatar_url
+    attr_accessible :screen_name, :email, :bio, :avatar_url
       
     has_many :blogs
     has_many :recent_posts, :through => :blogs, :source => :blog_posts
