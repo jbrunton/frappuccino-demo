@@ -16,6 +16,10 @@ class Api::UsersController < ApiController
         logger.info( includes.to_yaml )
 
         user = User.includes(includes).find(params[:id])
+        
+        # TODO: this does not constitute an RBAC permissions system...
+        user[:permissions] = { :read => true, :write => user.id == session[:user_id] }
+        
         respond_with( user )
     end
     

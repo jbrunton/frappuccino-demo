@@ -16,10 +16,11 @@ class SessionsController < ApplicationController
       user.save
     end
     
-    cookies[:screen_name] = user.screen_name
+    session[:user_id] = user.id
     cookies[:user_id] = user.id
+    cookies[:screen_name] = user.screen_name
     
-    redirect_to "/#"
+    redirect_to "/"
   end
 
   def failure
@@ -30,7 +31,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     cookies.delete :screen_name
     cookies.delete :user_id
-    redirect_to root_path
+    redirect_to "/"
   end
   
   private
