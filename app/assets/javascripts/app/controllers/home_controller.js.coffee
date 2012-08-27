@@ -6,16 +6,21 @@ namespace "app.controllers", ->
             @trending_tags = ko.observableArray([])
             @recent_posts = ko.observableArray([])
             
+        update_recent_posts: ( posts ) =>
+            @recent_posts( posts )
+            
+        update_trending_tags: ( tags ) =>
+            @trending_tags( tags )
+            
         load: ( env ) ->
-            self = @
             env.load_collection "BlogPost",
-                success: ( posts ) ->
-                    self.recent_posts( posts )
+                success: @update_recent_posts
+
             env.load_collection "Tag",
                 url: "api/search/trending",
-                success: ( tags ) ->
-                    self.trending_tags( tags )
-            @
+                success: @update_trending_tags
+
+            return @
 
     class @HomeController extends core.ApplicationModule
     
