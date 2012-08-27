@@ -18,7 +18,7 @@ namespace "app", ->
             env.defineSimpleType "number"
             env.defineSimpleType "string"
 
-
+            # TODO: replace the date formatting with moment.js
             formatDate = (date) ->
                 if date
                     date.toString()
