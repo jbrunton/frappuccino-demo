@@ -14,13 +14,3 @@ namespace "app.helpers", ->
         search: (form) ->
             search_text = $(form).find("input").val()
             _app.router.navigate("/search/#{search_text}")
-            
-        current_url: (encode) ->
-            match = window.location.href.match(/http:\/\/\w+:?\d*(\/#.*)/)
-            if match?
-                url = match[1]
-            else
-                url = '/'
-            if encode
-                url = encodeURIComponent(url)
-            url
