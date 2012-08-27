@@ -6,8 +6,10 @@ namespace "app.models", ->
         @attr "title"
         @attr "description"
         @attr "content"
+
+        @attr_serialize "title", "description", "content"
+
         @has_many "blog_posts"
         @belongs_to "user"
         
-        @attr_serialize "title", "description", "content"
-        
+        @validates "title", presence: true        
