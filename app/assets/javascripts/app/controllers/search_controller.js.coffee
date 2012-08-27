@@ -5,14 +5,17 @@ namespace "app.controllers", ->
             @query = ko.observable()
             @results = ko.observableArray()
             
+        update_results: ( posts ) =>
+            @results( posts )
+            
         search: ( query, env ) ->
-            self = @
             @query( query )
+            
             env.load_collection "BlogPost",
                 url: "#{@url}#{query}",
-                success: ( posts ) ->
-                    self.results( posts )
-            @
+                success: @update_results
+                
+            return @
     
     class @SearchController extends core.ApplicationModule
     
