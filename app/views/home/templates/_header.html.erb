@@ -15,7 +15,7 @@
                     <li><a class="nav-to" data-bind="attr: { href: url_for( 'users', current_user_id() ) }">my profile</a></li>
                     <li><a href="/logout">sign out</a></li>
                 {[ } else { ]}
-                    <li><a href="/auth/facebook">sign-in</a></li>
+                    <li><a href="/auth/facebook?origin={{ current_url(true) }}">sign-in</a></li>
                     <li><a class="nav-to" href="/register">register</a></li>
                 {[ } ]}
             </ul>

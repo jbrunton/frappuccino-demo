@@ -20,9 +20,9 @@ class SessionsController < ApplicationController
     cookies[:user_id] = user.id
     cookies[:screen_name] = user.screen_name
     
-    redirect_to "/"
+    redirect_to request.env['omniauth.origin'] || '/'
   end
-
+  
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
   end
