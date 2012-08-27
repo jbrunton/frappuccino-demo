@@ -4,12 +4,13 @@ namespace "app.decorators", ->
 
         # given a view model with a tags() property, returns a comma-separated string of the tags,
         # for use by inputs to edit a model's tags.
-        tags_content_for: ( view_model ) ->
+        tags_content_for: =>
+            self = @
             ko.computed
                 read: ->
-                    view_model?.tags()?.join(", ")
+                    self.tags()?.join(", ")
                 write: ( content ) ->
                     tags = _.map content.split(","),
                         ( tag ) -> $.trim( tag )
-                    view_model.tags( tags )
-                owner: view_model
+                    self.tags( tags )
+                owner: self
