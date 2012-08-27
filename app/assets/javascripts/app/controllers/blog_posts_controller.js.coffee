@@ -20,5 +20,5 @@ namespace "app.controllers", ->
                 include:
                     blog:
                         user: true
-            core.decorate( post, app.decorators.BlogPostDecorator )
+            core.decorate( post, app.decorators.MarkdownDecorator )
             @renderer.render_page "blog_posts/view", post
