@@ -13,6 +13,7 @@ namespace "app.controllers", ->
             
         edit_post: (id) =>
             post = @create_model( "BlogPost" ).load id
+            post.decorate( app.decorators.TagsDecorator )
             @renderer.render_page "blog_posts/edit", post
             
         view_post: (id) =>
@@ -20,5 +21,5 @@ namespace "app.controllers", ->
                 include:
                     blog:
                         user: true
-            core.decorate( post, app.decorators.MarkdownDecorator )
+            post.decorate( app.decorators.MarkdownDecorator )
             @renderer.render_page "blog_posts/view", post
