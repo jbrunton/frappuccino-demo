@@ -12,7 +12,7 @@ namespace "app.controllers", ->
             
         view_user: (id) =>
             user = @create_model( "User", { blogs: [], recent_posts: [] } ).load id,
-                includes:
+                include:
                     blogs: true
                     recent_posts: true
  

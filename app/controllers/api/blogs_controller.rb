@@ -7,8 +7,8 @@ class Api::BlogsController < ApiController
     end
   
     def show
-        if params[:includes]
-            includes = includes_hash( params[:includes] )
+        if params[:include]
+            includes = includes_hash( params[:include] )
         else
             includes = {}
         end

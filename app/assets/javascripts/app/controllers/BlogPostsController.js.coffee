@@ -17,7 +17,7 @@ namespace "app.controllers", ->
             
         view_post: (id) =>
             post = @create_model( "BlogPost", { blog: { title: null, user: { screen_name: null } } } ).load id,
-                includes:
+                include:
                     blog:
                         user: true
             core.decorate( post, app.decorators.BlogPostDecorator )
