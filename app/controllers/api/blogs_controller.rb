@@ -14,6 +14,10 @@ class Api::BlogsController < ApiController
         end
 
         blog = Blog.includes(includes).find(params[:id])
+        
+        # TODO: this does not constitute an RBAC permissions system...
+        blog[:permissions] = { :read => true, :write => blog.user_id == session[:user_id] }
+        
         respond_with( blog )
     end
     
