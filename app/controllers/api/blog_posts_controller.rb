@@ -27,13 +27,7 @@ class Api::BlogPostsController < ApiController
         blog_post.tags.destroy_all
         blog_post.save
         
-        if params[:data][:tags_attributes]
-            params[:data][:tags_attributes] = params[:data][:tags_attributes].collect{ |tag| { :tag => tag } }
-        end
-        
-        logger.info "*** params[:data]: #{params[:data]}"
-        
-        if blog_post.update_attributes(params[:data])
+        if blog_post.update_attributes( BlogPost.deserialize_attributes( params[:data] ) )
             respond_to do |format|
                 format.json { render json: blog_post }
             end
@@ -45,12 +39,9 @@ class Api::BlogPostsController < ApiController
     
     def create
         logger.info "*** params: #{params.to_yaml}"
-        
-        if params[:data][:tags]
-            params[:data][:tags] = params[:data][:tags].collect{ |tag| Tag.new(:tag => tag ) }
-        end
-        
-        blog_post = BlogPost.new(params[:data])
+
+        blog = Blog.find( params[:data][:blog_id] )
+        blog_post = blog.blog_posts.create( BlogPost.deserialize_attributes( params[:data] ) )
         
         if blog_post.save
             respond_to do |format|

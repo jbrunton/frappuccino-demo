@@ -9,6 +9,7 @@ namespace "app.controllers", ->
             
         create_post: (blog_id) =>
             post = @create_model( "BlogPost", blog_id: blog_id )
+            post.decorate( app.decorators.TagsDecorator )
             @renderer.render_page "blog_posts/edit", post
             
         edit_post: (id) =>

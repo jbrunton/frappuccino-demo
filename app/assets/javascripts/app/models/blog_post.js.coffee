@@ -9,9 +9,9 @@ namespace "app.models", ->
         @attr "created_at", class_name: "datetime"
         @attr "updated_at", class_name: "datetime"
         
-        @attr_serialize "title", "leader", "content", "tags"
-
         @belongs_to "blog"
         @has_many "tags", class_name: "string"
+
+        @attr_serialize "title", "leader", "content", "tags", "blog_id"
 
         @validates "title", presence: true

@@ -21,4 +21,21 @@ class BlogPost < ActiveRecord::Base
         
         blog_post
     end
+    
+    def self.deserialize_attributes( data )
+        attributes = data.clone
+        attributes.delete(:blog_id)
+        
+        if data[:tags_attributes]
+            tags = data[:tags_attributes].collect{ |tag| { :tag => tag } }
+            logger.info "*** tags: #{tags.inspect}"
+            attributes.merge!( :tags_attributes => tags )
+        end
+        
+        attributes
+    end
+    
+    def self.deserialize( data )
+        BlogPost.new( deserialize_attributes( data ) )
+    end
 end
