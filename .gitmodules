@@ -1,3 +1,0 @@
-[submodule "lib/gems/better-js-core"]
-	path = lib/gems/better-js-core
-	url = git@github.com:jbrunton/better-js-core.git
