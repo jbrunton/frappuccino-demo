@@ -25,6 +25,7 @@ BetterJsDemo::Application.routes.draw do
     
     match 'search/tag/:tag' => 'search#tag'
     match 'search/trending' => 'search#trending'
+    match 'search/:search_text' => 'search#index'
   end
   
   get '/login', :to => 'sessions#new', :as => :login

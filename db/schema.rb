@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20120308221311) do
     t.string   "user_name"
     t.string   "screen_name"
     t.string   "email"
-    t.string   "password"
     t.string   "bio"
     t.string   "avatar_url"
     t.datetime "created_at",  :null => false

@@ -1,15 +1,15 @@
 namespace "app.controllers", ->
 
-    class TagSearchViewModel
-        constructor: ->
-            @tag = ko.observable()
+    class SearchViewModel
+        constructor: ( @url ) ->
+            @query = ko.observable()
             @results = ko.observableArray()
             
-        search: ( tag, env ) ->
+        search: ( query, env ) ->
             self = @
-            @tag( tag )
+            @query( query )
             env.load_collection "BlogPost",
-                url: "api/search/tag/#{tag}",
+                url: "#{@url}#{query}",
                 success: ( posts ) ->
                     self.results( posts )
             @
@@ -17,8 +17,14 @@ namespace "app.controllers", ->
     class @SearchController extends core.ApplicationModule
     
         routes:
+            "search/:tag":      "search"
             "search/tag/:tag":  "search_tag"
             
+        search: ( text ) =>
+            @renderer.render_page "search/results",
+                new SearchViewModel("api/search/").search( decodeURI( text ), @env )
+        
         search_tag: ( tag ) =>
-            @renderer.render_page "search/tag",
-                new TagSearchViewModel().search( decodeURI( tag ), @env )
+            @renderer.render_page "search/results",
+                new SearchViewModel("api/search/tag/").search( decodeURI( tag ), @env )
+                
