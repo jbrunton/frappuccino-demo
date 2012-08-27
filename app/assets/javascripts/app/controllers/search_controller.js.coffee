@@ -1,33 +1,19 @@
 namespace "app.controllers", ->
 
-    class SearchViewModel
-        constructor: ( @url ) ->
-            @query = ko.observable()
-            @results = ko.observableArray()
-            
-        update_results: ( posts ) =>
-            @results( posts )
-            
-        search: ( query, env ) ->
-            @query( query )
-            
-            env.load_collection "BlogPost",
-                url: "#{@url}#{query}",
-                success: @update_results
-                
-            return @
-    
     class @SearchController extends core.ApplicationModule
     
         routes:
             "search/:tag":      "search"
             "search/tag/:tag":  "search_tag"
             
+        create_view_model: ( url, query_param ) ->
+            new app.view_models.SearchViewModel( url, decodeURI( query_param ) )
+            
         search: ( text ) =>
-            @renderer.render_page "search/results",
-                new SearchViewModel("api/search/").search( decodeURI( text ), @env )
+            search_view_model = @create_view_model( "api/search/",  text ).search( @env )
+            @renderer.render_page "search/results", search_view_model
         
         search_tag: ( tag ) =>
-            @renderer.render_page "search/results",
-                new SearchViewModel("api/search/tag/").search( decodeURI( tag ), @env )
+            search_view_model = @create_view_model( "api/search/tag/",  tag ).search( @env )
+            @renderer.render_page "search/results", search_view_model
                 
