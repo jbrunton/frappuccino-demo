@@ -24,13 +24,9 @@ namespace "app.helpers.shared", ->
                 
         edit_url_for: ( resource ) =>
             if typeof resource == "object"
-                collection_name = resource.collection_name
-                id = resource.id()
+                @url_for( resource, "edit" )
             else
-                collection_name = resource
-                id = arguments[1]
-            
-            @url( collection_name, id, "edit" )
+                @url_for( resource, arguments[1], "edit" )
             
         email_url: ( email ) =>
             "mailto:#{email}"
