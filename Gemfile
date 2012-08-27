@@ -23,7 +23,7 @@ group :development, :test do
 end
 
 # gem 'better-js-core',     :git => 'git://github.com/jbrunton/better-js-core.git'
-gem 'better-js-core', :path => 'lib/gems/better-js-core'
+gem 'frappuccino-core', :path => 'lib/gems/frappuccino-core'
 
 # Gems used only for assets and not required
 # in production environments by default.
