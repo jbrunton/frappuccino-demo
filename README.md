@@ -39,29 +39,55 @@ Frappuccino implements a sophisticated data model to faciliate the serialization
 ```coffeescript
 class @User extends core.Model
 
+    # Attributes on the data model
     @attr "id"
     @attr "email"
     @attr "screen_name"
     @attr "bio"
     @attr "avatar_url"
-        
+    
+    # Associations (which are exposed via attributes) - 'blogs' is inferred to be a list of the
+    # 'Blog' data model type, and 'recent_posts' is explicitly set to be a list of BlogPosts
     @has_many "blogs"
     @has_many "recent_posts", class_name: "BlogPost"
-    
+
+    # The attributes which should be automatically serialized when saving/updating instances
     @attr_serialize "screen_name", "email", "bio", "avatar_url"
 
+    # Validators
     @validates "email", presence: true, email: true
     @validates "screen_name", presence: true
 ```
 
-This defines:
-
-1. A number of data attributes (id, email, screen_name, bio and avatar_url).
-2. Two associations: a User has many blogs (i.e. a list of instances of the Blog data model), and many recent_posts, the underlying type for which is explicitly given as the BlogPost data model.
-3. A set of attributes which are automatically serialized when saving/updating the model (screen_name, email, bio and avatar_url).
-4. Validators for email and screen_name.
+The attributes, associations and validators are used to define the behavior of the ```validate()```, ```save()``` and ```load()``` methods on the User class.
 
 ### Serialization and RESTful resources
+
+The UsersController defines two routes and two actions, which are, as you'd hope, extremely thin:
+
+```coffeescript
+class @UsersController extends core.ApplicationModule
+    
+    # note that the precise semantics of the routing are depending on the routing API you use.  the
+    # demo app uses Backbone's Router class
+    routes:
+        "users/:id/view":   "view_user"
+        "users/:id/edit":   "edit_user"
+
+    # load an instance of the specified user from the server (including the 'blogs' and
+    # 'recent_posts' associations), and bind the data model to the 'users/view' template
+    view_user: (id) =>
+        user = @create_model( "User" ).load id,
+            include: { blogs: true, recent_posts: true }
+        @renderer.render_page "users/view", user
+
+    # load an instance of the specified user (without the associations this time) and bind the data
+    # model to the 'users/edit' template
+    edit_user: (id) =>
+        user = @create_model( "User" ).load id
+        @renderer.render_page "users/edit", user
+```            
+
 
 ### Helpers and decorators
 
