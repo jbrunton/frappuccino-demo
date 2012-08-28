@@ -31,3 +31,38 @@ TODO: this section.
 * Serialization and RESTful resources (e.g. UsersController)
 * Helpers (e.g. url and auth helpers)
 * View Models and template regions (e.g. header view model)
+
+### Models
+
+Frappuccino implements a sophisticated data model to faciliate the serialization of complex, nested resources to and from data repositories (e.g. a RESTful web API, a database or local storage), together with a validation API akin to Rails'.  For example, here's the User model:
+
+```coffeescript
+class @User extends core.Model
+
+    @attr "id"
+    @attr "email"
+    @attr "screen_name"
+    @attr "bio"
+    @attr "avatar_url"
+        
+    @has_many "blogs"
+    @has_many "recent_posts", class_name: "BlogPost"
+    
+    @attr_serialize "screen_name", "email", "bio", "avatar_url"
+
+    @validates "email", presence: true, email: true
+    @validates "screen_name", presence: true
+```
+
+This defines:
+
+1. A number of data attributes (id, email, screen_name, bio and avatar_url).
+2. Two associations: a User has many blogs (i.e. a list of instances of the Blog data model), and many recent_posts, the underlying type for which is explicitly given as the BlogPost data model.
+3. A set of attributes which are automatically serialized when saving/updating the model (screen_name, email, bio and avatar_url).
+4. Validators for email and screen_name.
+
+### Serialization and RESTful resources
+
+### Helpers and decorators
+
+### View models and template binding
