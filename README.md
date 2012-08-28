@@ -7,7 +7,7 @@ Frappuccino is an (**experimental**) opinionated, testable, platform-agnostic fr
 * **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse of classes across multiple platforms (e.g. client, server, mobile apps), and also for testing purposes.
 * **Loosely coupled**: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules are loosely coupled, whilst maintaining clearly defined interfaces and access methods between them.
 
-### Work In Progress
+### Work in progress
 
 Note that Frappuccino is not (yet!) intended to be a production-ready platform.  Its purpose is to explore and demonstrate some of the best practices for developing applications with JavaScript and CoffeeScript.  Comments and feedback are most welcome at this stage of development.
 
