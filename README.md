@@ -11,9 +11,9 @@ Frappuccino is an **experimental** opinionated, testable, platform-agnostic fram
 
 Note that Frappuccino is not (yet!) intended to be a production-ready platform.  Its purpose is to explore and demonstrate some of the best practices for developing applications with JavaScript and CoffeeScript.  Comments and feedback are most welcome at this stage of development.
 
-### Background
+### Motivation
 
-For some background to the patterns, see my presentation on [Building Large Scale Applications](https://speakerdeck.com/u/jbrunton/p/building-testable-large-scale-applications). (Additionally, [JavaScript Best Practices](https://speakerdeck.com/u/jbrunton/p/javascript-best-practices) may also be of passing interest, as it provides a motivation for restricting the use of jQuery to low-level library code.)
+For some background to the patterns, see my presentation on [Building Large Scale Applications](https://speakerdeck.com/u/jbrunton/p/building-testable-large-scale-applications). (Additionally, [JavaScript Best Practices](https://speakerdeck.com/u/jbrunton/p/javascript-best-practices) may also be of passing interest, as it provides a motivation for restricting the use of jQuery to low-level library code in favor of more structured frameworks and pattern such as the ones in this demo.)
 
 Inspiration for the framework comes from:
 
