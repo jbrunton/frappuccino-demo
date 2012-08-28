@@ -2,16 +2,17 @@
 
 Frappuccino is an opinionated, testable, platform-agnostic framework for structuring large scale JavaScript and CoffeeScript applications.  It was developed with the following principles in mind:
 
-* Opinionated: code should be succinct as possible when following convention.
-* DRY: Frappuccino encourages thin controllers and code reuse by promoting helpers, decorators and mixins.
-* Platform-agnostic, framework-agnostic and testable: Frappuccino leverages a dependency injection container to facilitate the reuse and testing of your classes across multiple platforms (e.g. client, server, mobile apps) and for testing purposes.
-* Loosely coupled: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules can be loosely coupled whilst maintaining clearly defined interfaces and access methods between them.
+* **Opinionated**: code should be succinct as possible when following convention.
+* **DRY**: Frappuccino encourages thin controllers and code reuse by promoting helpers, decorators and mixins.
+* **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse and testing of your classes across multiple platforms (e.g. client, server, mobile apps) and for testing purposes.
+* **Loosely coupled**: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules can be loosely coupled whilst maintaining clearly defined interfaces and access methods between them.
 
 ## Running the demo
 
 Clone the repo:
 
     git clone git@github.com:jbrunton/frappuccino-demo.git
+    cd frappuccino-demo
     
 Set up the database and populate it with some seed data:
 
@@ -21,20 +22,15 @@ And start up the server:
 
     rails s
     
-You should now have the site running at http://localhost:3000.
+You should now have the site running at [http://localhost:3000].
 
 ## A few points of interest
-
-TODO: this section.
-
-* Models and validation (e.g. User)
-* Serialization and RESTful resources (e.g. UsersController)
-* Helpers (e.g. url and auth helpers)
-* View Models and template regions (e.g. header view model)
 
 ### Models
 
 Frappuccino implements a sophisticated data model to faciliate the serialization of complex, nested resources to and from data repositories (e.g. a RESTful web API, a database or local storage), together with a validation API akin to Rails'.  For example, here's the User model:
+
+[app/assets/javascripts/app/models/user.js.coffee](https://github.com/jbrunton/frappuccino-demo/blob/master/app/assets/javascripts/app/models/user.js.coffee)
 
 ```coffeescript
 class @User extends core.Model
@@ -65,6 +61,8 @@ The attributes, associations and validators are used to define the behavior of t
 
 The UsersController defines two routes and two actions, which are, as you'd hope, extremely thin:
 
+[app/assets/javascripts/app/controllers/users_controller.js.coffee](https://github.com/jbrunton/frappuccino-demo/blob/master/app/assets/javascripts/app/controllers/users_controller.js.coffee)
+
 ```coffeescript
 class @UsersController extends core.ApplicationModule
     
@@ -94,15 +92,23 @@ Although it's not necessary to use an MVVM pattern (and, indeed, it would be com
 
 The rendering model also provides a mechanism to inject view models into specific regions with the UI and bind them to a template.  For example, the master template defines two such bindable regions:
 
+[app/views/home/templates/_master.html.erb](https://github.com/jbrunton/frappuccino-demo/blob/master/app/views/home/templates/_master.html.erb)
+
 ```html
 <div data-region="header">
 </div>
 
 <div class="content container" data-region="content">
 </div>
+
+<footer class="footer container">
+    <p>A demo blogging platform for the <a target="_blank" href="https://github.com/jbrunton/better-js-core">better-js</a> framework.</p>
+</footer>
 ```
 
 The ```content``` region is bound by each controller action, with a call to ```@renderer.render_page```.  But the header view model is instantiated and bound once on the application start up (in the HeaderModule class):
+
+[app/modules/header_module.js.coffee](https://github.com/jbrunton/frappuccino-demo/blob/master/app/assets/javascripts/app/modules/header_module.js.coffee)
 
 ```coffeescript
 class @HeaderModule extends core.ApplicationModule
@@ -114,6 +120,8 @@ class @HeaderModule extends core.ApplicationModule
 ### Helpers and decorators
 
 It's convenient to expose methods frequently used by the templating engine in reusable, testable classes.  Frappuccino implements a helper mechanism similar to Rails': for example, the header template makes use of the ```current_user_id()``` and ```url_for``` helper methods to generate a url to the authenticated user's profile page:
+
+[app/views/home/templates/_header.html.erb](https://github.com/jbrunton/frappuccino-demo/blob/master/app/views/home/templates/_header.html.erb)
 
 ```html
     {[ if (authenticated()) { ]}
