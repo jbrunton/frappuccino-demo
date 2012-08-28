@@ -7,6 +7,8 @@ Frappuccino is an opinionated, testable, platform-agnostic framework for structu
 * **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse and testing of your classes across multiple platforms (e.g. client, server, mobile apps) and for testing purposes.
 * **Loosely coupled**: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules can be loosely coupled whilst maintaining clearly defined interfaces and access methods between them.
 
+For some background to the patterns, see my presentation on [Building Large Scale Applications](https://speakerdeck.com/u/jbrunton/p/building-testable-large-scale-applications), (and also [JavaScript Best Practices](https://speakerdeck.com/u/jbrunton/p/javascript-best-practices) for the motivation for using jQuery only as a low-level library).
+
 ## Running the demo
 
 Clone the repo:
