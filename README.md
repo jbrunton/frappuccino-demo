@@ -4,7 +4,7 @@ Frappuccino is an (**experimental**) opinionated, testable, platform-agnostic fr
 
 * **Opinionated**: code should be succinct as possible when following convention.
 * **DRY**: Frappuccino encourages code reuse and thin controllers by promoting helpers, decorators and mixins.
-* **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse of classes across multiple platforms (e.g. client, server, mobile apps), and also for testing purposes.
+* **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse of classes across multiple platforms (e.g. client, server, mobile apps), with different platforms (e.g. Knockout.js, Backbone.js, Node.js or Appcelerator Titanium), and also for testing purposes.
 * **Loosely coupled**: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules are loosely coupled, whilst maintaining clearly defined interfaces and access methods between them.
 
 ### Work in progress
