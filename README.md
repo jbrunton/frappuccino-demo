@@ -1,6 +1,6 @@
 # Frappuccino Demo App
 
-Frappuccino is an **experimental** opinionated, testable, platform-agnostic framework for structuring large scale JavaScript and CoffeeScript applications.  It was developed with the following principles in mind:
+Frappuccino is an (**experimental**) opinionated, testable, platform-agnostic framework for structuring large scale JavaScript and CoffeeScript applications.  It was developed with the following principles in mind:
 
 * **Opinionated**: code should be succinct as possible when following convention.
 * **DRY**: Frappuccino encourages thin controllers and code reuse by promoting helpers, decorators and mixins.
