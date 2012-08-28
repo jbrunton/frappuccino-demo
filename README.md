@@ -90,6 +90,27 @@ class @UsersController extends core.ApplicationModule
 
 ### View models and template binding
 
+Although it's not necessary to use an MVVM pattern (and, indeed, it would be completely redundant to do so for a server-side or Titanium app, for example), Frappuccino's data model is designed to work transparently with MVVM libraries.  The demo app configures the application Bootstrapper to use the KoPropertyFactory class when building models, so that the attributes on each model are observable.  Each model is therefore inherently a view model.
+
+The rendering model also provides a mechanism to inject view models into specific regions with the UI and bind them to a template.  For example, the master template defines two such bindable regions:
+
+```html
+<div data-region="header">
+</div>
+
+<div class="content container" data-region="content">
+</div>
+```
+
+The ```content``` region is bound by each controller action, with a call to ```@renderer.render_page```.  But the header view model is instantiated and bound once on the application start up (in the HeaderModule class):
+
+```coffeescript
+class @HeaderModule extends core.ApplicationModule
+    @on "Application.initialize", ->
+        @view_model = new app.view_models.HeaderViewModel( @sandbox )
+        @sandbox.renderer.bind_default_data "header", @view_model
+```
+
 ### Helpers and decorators
 
 It's convenient to expose methods frequently used by the templating engine in reusable, testable classes.  Frappuccino implements a helper mechanism similar to Rails': for example, the header template makes use of the ```current_user_id()``` and ```url_for``` helper methods to generate a url to the authenticated user's profile page:
