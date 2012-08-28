@@ -29,6 +29,10 @@ Clone the repo and the core framework submodule:
     cd frappuccino-demo
     git submodule update --init
     
+Install the required gems:
+
+    bundle install --without production
+    
 Set up the database and populate it with some seed data:
 
     rake db:create && rake db:migrate && rake db:seed
