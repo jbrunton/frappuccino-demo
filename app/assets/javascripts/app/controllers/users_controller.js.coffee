@@ -12,8 +12,6 @@ namespace "app.controllers", ->
             
         view_user: (id) =>
             user = @create_model( "User", { blogs: [], recent_posts: [] } ).load id,
-                include:
-                    blogs: true
-                    recent_posts: true
+                include: { blogs: true, recent_posts: true }
  
             @renderer.render_page "users/view", user
