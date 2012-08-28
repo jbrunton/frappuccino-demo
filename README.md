@@ -1,20 +1,33 @@
 # Frappuccino Demo App
 
-Frappuccino is an opinionated, testable, platform-agnostic framework for structuring large scale JavaScript and CoffeeScript applications.  It was developed with the following principles in mind:
+Frappuccino is an **experimental** opinionated, testable, platform-agnostic framework for structuring large scale JavaScript and CoffeeScript applications.  It was developed with the following principles in mind:
 
 * **Opinionated**: code should be succinct as possible when following convention.
 * **DRY**: Frappuccino encourages thin controllers and code reuse by promoting helpers, decorators and mixins.
 * **Platform-agnostic, framework-agnostic and testable**: Frappuccino leverages a dependency injection container to facilitate the reuse and testing of your classes across multiple platforms (e.g. client, server, mobile apps) and for testing purposes.
 * **Loosely coupled**: Frappuccino implements a modular MVC framework (with the sandbox pattern and automatic event registration) to ensure independent application modules can be loosely coupled whilst maintaining clearly defined interfaces and access methods between them.
 
-For some background to the patterns, see my presentation on [Building Large Scale Applications](https://speakerdeck.com/u/jbrunton/p/building-testable-large-scale-applications), (and also [JavaScript Best Practices](https://speakerdeck.com/u/jbrunton/p/javascript-best-practices) for the motivation for using jQuery only as a low-level library).
+### Work In Progress
+
+Note that Frappuccino is not (yet!) intended to be a production-ready platform.  Its purpose is to explore and demonstrate some of the best practices for developing applications with JavaScript and CoffeeScript.  Comments and feedback are most welcome at this stage of development.
+
+### Background
+
+For some background to the patterns, see my presentation on [Building Large Scale Applications](https://speakerdeck.com/u/jbrunton/p/building-testable-large-scale-applications). (Additionally, [JavaScript Best Practices](https://speakerdeck.com/u/jbrunton/p/javascript-best-practices) may also be of passing interest, as it provides a motivation for restricting the use of jQuery to low-level library code.)
+
+Inspiration for the framework comes from:
+
+* Addy Osmani, [Building Decoupled Large-scale Applications Using JavaScript](https://speakerdeck.com/u/addyosmani/p/building-decoupled-large-scale-applications-using-javascript-and-jquery)
+* Martin Fowler, [Inversion of Control Containers and the Dependency Injection pattern](http://martinfowler.com/articles/injection.html)
+* MSDN, <a href="http://msdn.microsoft.com/en-us/library/ff921140(v=pandp.40)">Managing Dependencies Between Components</a> (Prism documentation)
 
 ## Running the demo
 
-Clone the repo:
+Clone the repo and the core framework submodule:
 
     git clone git@github.com:jbrunton/frappuccino-demo.git
     cd frappuccino-demo
+    git submodule update --init
     
 Set up the database and populate it with some seed data:
 
