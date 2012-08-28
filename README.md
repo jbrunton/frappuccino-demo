@@ -88,7 +88,18 @@ class @UsersController extends core.ApplicationModule
         @renderer.render_page "users/edit", user
 ```            
 
+### View models and template binding
 
 ### Helpers and decorators
 
-### View models and template binding
+It's convenient to expose methods frequently used by the templating engine in reusable, testable classes.  Frappuccino implements a helper mechanism similar to Rails': for example, the header template makes use of the ```current_user_id()``` and ```url_for``` helper methods to generate a url to the authenticated user's profile page:
+
+```html
+    {[ if (authenticated()) { ]}
+        <li><a class="nav-to" data-bind="attr: { href: url_for( 'users', current_user_id() ) }">
+            my profile</a></li>
+        <li><a href="/logout">sign out</a></li>
+    {[ } else { ]}
+        <!-- ... -->
+    {[ } ]}
+```
