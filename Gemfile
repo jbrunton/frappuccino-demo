@@ -22,8 +22,8 @@ group :development, :test do
   gem 'jasmine-stories'
 end
 
-# gem 'better-js-core',     :git => 'git://github.com/jbrunton/better-js-core.git'
-gem 'frappuccino-core', :path => 'lib/gems/frappuccino-core'
+gem 'frappuccino-core',     :git => 'git://github.com/jbrunton/frappuccino-core.git'
+# gem 'frappuccino-core', :path => 'lib/gems/frappuccino-core'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,5 +1,6 @@
-PATH
-  remote: lib/gems/frappuccino-core
+GIT
+  remote: git://github.com/jbrunton/frappuccino-core.git
+  revision: 9f356913e244c7482090b3cdc85c761d8ccc98e0
   specs:
     frappuccino-core (0.0.1)
       railties (~> 3.1)
