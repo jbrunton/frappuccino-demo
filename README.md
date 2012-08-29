@@ -151,3 +151,57 @@ It's convenient to expose methods frequently used by the templating engine in re
         <!-- ... -->
     {[ } ]}
 ```
+
+### Dependency injection
+
+The framework provides a DI container class for dependency injection, allowing dependencies to be resolved dynamically at runtime. This has two great benefits.
+
+First, this is what allows the Frappuccino to remain platform- and framework-agnostic.  For example, the Bootstrapper in the demo app configures the container with a Renderer and PropertyFactory which use the Knockout.js framework for templating an data binding; an HTTP ModelRepository for data access; and the Backbone.js Router for routing and history:
+
+[app/assets/javascripts/app/bootstrapper.js.coffee](https://github.com/jbrunton/frappuccino-demo/blob/master/app/assets/javascripts/app/bootstrapper.js.coffee)
+
+```coffeescript
+class @Bootstrapper extends core.Bootstrapper
+    
+    configure_container: ( application ) ->
+        container = super( application )
+            
+        container.register_class "Renderer", infrastructure.KoRenderer, singleton: true
+        container.register_class "Router", infrastructure.BackboneRouter, singleton: true
+        container.register_class "PropertyFactory", core.types.KoPropertyFactory, singleton: true
+        container.register_class "ModelRepository", core.resources.HttpResourceHandler, singleton: true
+        # ...
+```
+
+Another application could use a completely different templating engine and router; and a server application might use a database repository. DI separates these dependencies from the design of the framework.
+
+A second benefit to this pattern is the ease with which mocked or stubbed classes can be injected into an application, which greatly facilitates testing. The Frappuccino framework itself makes use of this for feature tests, which go beyond unit tests by ensuring that functionally related code works as expected. DI allows such testing to be carried out in an isolated, repeatable manner:
+
+[spec/javascripts/stories/validator_stories.js.coffee](https://github.com/jbrunton/frappuccino-core/blob/master/spec/javascripts/stories/validator_stories.js.coffee)
+
+```coffeescript
+feature "core.ModelValidator", ->
+        
+    summary(
+        'As a client of the framework',
+        'I wish to validate model classes'
+    )
+
+    scenario "basic validatation", ->
+    
+        app = bootstrapper = BlogPost = null
+        
+        Given "I have an application and a bootstrapper", ->
+            app = new core.Application
+            bootstrapper = test_helper.Bootstrapper()
+        
+        When "I configure and run the application with the bootstrapper", ->
+            # some configuration, and then...
+            app.run( bootstrapper )
+            
+        Then "I should be able to validate the model", ->
+            blog_post = new BlogPost
+            expect( blog_post.validate() ).toBe( false )
+            
+            blog_post.title( "Some Title" )
+            expect( blog_post.validate() ).toBe( true )
