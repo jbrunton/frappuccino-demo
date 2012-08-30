@@ -23,11 +23,10 @@ Inspiration for the framework comes from:
 
 ## Running the demo
 
-Clone the repo and the core framework submodule:
+Clone and ```cd``` to the repo:
 
     git clone git@github.com:jbrunton/frappuccino-demo.git
     cd frappuccino-demo
-    git submodule update --init
     
 Install the required gems:
 
