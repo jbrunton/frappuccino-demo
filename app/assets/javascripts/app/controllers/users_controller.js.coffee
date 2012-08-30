@@ -11,7 +11,7 @@ namespace "app.controllers", ->
             @renderer.render_page "users/edit", user
             
         view_user: (id) =>
-            user = @create_model( "User", { blogs: [], recent_posts: [] } ).load id,
+            user = @create_model( "User" ).load id,
                 include: { blogs: true, recent_posts: true }
  
             @renderer.render_page "users/view", user

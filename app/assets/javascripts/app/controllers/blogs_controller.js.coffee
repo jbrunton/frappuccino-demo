@@ -17,6 +17,6 @@ namespace "app.controllers", ->
             @renderer.render_page "blogs/edit", blog
             
         view_blog: (id) =>
-            blog = @create_model( "Blog", { blog_posts: [], user: { screen_name: null } } ).load id,
+            blog = @create_model( "Blog" ).load id,
                 include: { blog_posts: true, user: true }
             @renderer.render_page "blogs/view", blog
