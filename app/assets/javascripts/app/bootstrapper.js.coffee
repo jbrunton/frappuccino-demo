@@ -10,7 +10,7 @@ namespace "app", ->
             container.register_class "Renderer", infrastructure.KoRenderer, singleton: true
             container.register_class "Router", infrastructure.BackboneRouter, singleton: true
             container.register_class "PropertyFactory", core.types.KoPropertyFactory, singleton: true
-            container.register_class "ModelRepository", core.resources.HttpResourceHandler, singleton: true
+            container.register_class "ModelRepository", core.resources.HttpRepository, singleton: true
 
             # TODO: move this to a resources controller which reads from the api feed
             env = container.resolve "Environment"
