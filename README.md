@@ -155,7 +155,7 @@ It's convenient to expose methods frequently used by the templating engine in re
 
 The framework provides a DI container class for dependency injection, allowing dependencies to be resolved dynamically at runtime. This has two great benefits.
 
-First, this is what allows the Frappuccino to remain platform- and framework-agnostic.  For example, the Bootstrapper in the demo app configures the container with a Renderer and PropertyFactory which use the Knockout.js framework for templating an data binding; an HTTP ModelRepository for data access; and the Backbone.js Router for routing and history:
+First, this is what allows the Frappuccino to remain platform- and framework-agnostic.  For example, the Bootstrapper in the demo app configures the container with a Renderer and PropertyFactory which use the Knockout.js framework for templating and data binding; an HTTP ModelRepository for data access; and the Backbone.js Router for routing and history:
 
 [app/assets/javascripts/app/bootstrapper.js.coffee](https://github.com/jbrunton/frappuccino-demo/blob/master/app/assets/javascripts/app/bootstrapper.js.coffee)
 
@@ -172,9 +172,9 @@ class @Bootstrapper extends core.Bootstrapper
         # ...
 ```
 
-Another application could use a completely different templating engine and router; and a server application might use a database repository. DI separates these dependencies from the design of the framework.
+Another application could use a completely different templating engine and router; and a server application might use a database repository. DI separates these dependencies from the core framework, and from client code which uses it.
 
-A second benefit to this pattern is the ease with which mocked or stubbed classes can be injected into an application, which greatly facilitates testing. The Frappuccino framework itself makes use of this for feature tests, which go beyond unit tests by ensuring that functionally related code works as expected. DI allows such testing to be carried out in an isolated, repeatable manner:
+A second benefit to this pattern is the ease with which mocked or stubbed classes can be injected into an application, which greatly facilitates testing. The Frappuccino framework itself makes use of this for feature tests, which go beyond unit tests by ensuring that functionally related classes work together as expected. DI allows such testing to be carried out in an isolated, repeatable manner:
 
 [spec/javascripts/stories/validator_stories.js.coffee](https://github.com/jbrunton/frappuccino-core/blob/master/spec/javascripts/stories/validator_stories.js.coffee)
 
