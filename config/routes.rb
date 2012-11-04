@@ -1,4 +1,4 @@
-BetterJsDemo::Application.routes.draw do
+FrappuccinoDemo::Application.routes.draw do
   
   get "sessions/new"
 

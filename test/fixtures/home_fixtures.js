@@ -23,7 +23,7 @@ casper.run(function() {
 var casper = require('casper').create();
 
 casper.start('http://localhost:3000/', function() {
-    this.test.assertTitle('BetterJsDemo', 'title is BetterJsDemo');
+    this.test.assertTitle('FrappuccinoDemo', 'title is FrappuccinoDemo');
     this.test.assertExists('#recent-posts', 'recent posts section is present');
     this.test.assertExists('#recent-posts li', 'there is a recent post');
     this.test.assertTextExists('Application Architecture', 'Application Architecture post exists');

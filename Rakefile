@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BetterJsDemo::Application.load_tasks
+FrappuccinoDemo::Application.load_tasks
