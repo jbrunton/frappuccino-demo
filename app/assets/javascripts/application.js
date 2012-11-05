@@ -11,9 +11,7 @@
 //= require pagedown
 //= require prettify
 //= require core
-//= require_tree ./lib/underscore.js
-//= require_tree ./lib/backbone.js
-//= require_tree ./lib/knockout.js
+//= require lib
 //= require_tree ./infrastructure
 //= require_tree ./app
 //= require_tree ./config

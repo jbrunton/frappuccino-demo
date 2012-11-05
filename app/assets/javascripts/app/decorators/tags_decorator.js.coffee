@@ -1,16 +1,23 @@
 namespace "app.decorators", ->
 
+    # given a view model with a tags() property, provides a writable computed property "tags_csv", a
+    # comma-separated string of the tags, for use by inputs to edit a model's tags.
+    #
     class @TagsDecorator
-
-        # given a view model with a tags() property, returns a comma-separated string of the tags,
-        # for use by inputs to edit a model's tags.
-        tags_content_for: =>
-            self = @
-            ko.computed
+    
+        constructor: ->
+            @tags_content = ko.computed
                 read: ->
-                    self.tags()?.join(", ")
-                write: ( content ) ->
-                    tags = _.map content.split(","),
-                        ( tag ) -> $.trim( tag )
-                    self.tags( tags )
-                owner: self
+                    @tags_as_csv( @tags?() )
+                write: ( text ) ->
+                    @tags?( @tags_from_csv( text ) )
+                owner: @
+
+        tags_as_csv: ( tags ) ->
+            tags?.join(",")
+            
+        tags_from_csv: ( text ) ->
+            _.map text.split(","), ( tag ) ->
+                $.trim( tag )
+    
+        
