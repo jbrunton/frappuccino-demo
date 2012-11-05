@@ -6,14 +6,12 @@
 
 <div class="row">
     <div class="span8">
-        {[ if (results().length > 0) { ]}
-
+        <!-- ko if: results().length -->
             <div data-bind="template: { name: 'template:blog_posts/list', data: results }" />
+        <!-- /ko -->
 
-        {[ } else { ]}
-        
+        <!-- ko ifnot: results().length -->
             <p><em>No results found</em></p>
-        
-        {[ } ]}
+        <!-- /ko -->
     </div>
 </div>
