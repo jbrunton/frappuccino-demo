@@ -2,15 +2,11 @@
     <fieldset>
         <legend>Edit Post</legend>
         
-        <div class="control-group" data-bind="css: { error: !title.is_valid() }">
-            <label class="control-label" for="user_name">title</label> 
-            <div class="controls">
-                <input type="text" class="input-xxlarge" data-bind="value: title">
-                <div data-bind="template: {
-                    name: 'template:shared/attr_errors',
-                    data: title.errors }" />
-            </div>
-        </div>
+        <div data-bind="formField: {
+            field: 'title',
+            label: 'Title'
+        }" />
+        
         <div class="control-group">
             <label class="control-label" for="tags">tags</label>
             <div class="controls">

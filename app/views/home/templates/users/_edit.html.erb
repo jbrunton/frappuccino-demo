@@ -3,37 +3,26 @@
     
         <legend>Edit profile</legend>
         
-        <div class="control-group" data-bind="css: { error: !screen_name.is_valid() }">
-            <label class="control-label" for="screen_name">Screen name</label> 
-            <div class="controls">
-                <input type="text" class="input-large" data-bind="value: screen_name">
-                <div data-bind="template: {
-                    name: 'template:shared/attr_errors',
-                    data: screen_name.errors }" />
-            </div>
-        </div>
-        <div class="control-group" data-bind="css: { error: !email.is_valid() }">
-            <label class="control-label" for="email">Email</label> 
-            <div class="controls">
-                <input type="text" class="input-large" id="email" data-bind="value: email">
-                <div data-bind="template: {
-                    name: 'template:shared/attr_errors',
-                    data: email.errors }" />
-            </div>
-        </div>        
-        <div class="control-group">
-            <label class="control-label" for="avatar_url">Avatar url</label> 
-            <div class="controls">
-                <input type="text" class="input-large" id="avatar_url" data-bind="value: avatar_url">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="bio">Bio</label> 
-            <div class="controls">
-                <textarea class="input-large content-small" data-bind="value: bio" />
-            </div>
-        </div>
-            
+        <div data-bind="formField: {
+            field: 'screen_name',
+            label: 'Screen name'
+        }" />
+        
+        <div data-bind="formField: {
+            field: 'email',
+            label: 'Email'
+        }" />
+        
+        <div data-bind="formField: {
+            field: 'avatar_url',
+            label: 'Avatar url'
+        }" />
+        
+        <div data-bind="formField: {
+            field: 'bio',
+            label: 'Bio'
+        }" />
+        
         <div class="form-actions">
             <button class="btn btn-primary" data-bind="click: submit_action( $data )">Submit</button>
             <button class="btn nav-to" data-bind="attr: { href: url_for( $data ) }">Cancel</button>

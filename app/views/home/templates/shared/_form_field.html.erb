@@ -1,0 +1,10 @@
+<div class="control-group" data-bind="css: { error: !$parent[$field].is_valid() }">
+    <label class="control-label" data-bind="text: $label, attr: { for: $field }" /> 
+    <div class="controls">
+        <input type="text" class="input-large"
+            data-bind="value: $parent[$field], attr: { name: $field }" />
+        <div data-bind="template: {
+                    name: 'template:shared/attr_errors',
+                    data: $parent[$field].errors }" />
+    </div>
+</div>

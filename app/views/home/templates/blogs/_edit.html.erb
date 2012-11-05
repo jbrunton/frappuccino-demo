@@ -3,15 +3,10 @@
         <legend data-bind="visible: id()">Edit blog</legend>
         <legend data-bind="visible: !id()">New blog</legend>
 
-        <div class="control-group">
-            <label class="control-label" for="user_name">title</label> 
-            <div class="controls">
-                <input type="text" class="input-xxlarge" data-bind="value: title">
-                <div data-bind="template: {
-                    name: 'template:shared/attr_errors',
-                    data: title.errors }" />
-            </div>
-        </div>
+        <div data-bind="formField: {
+            field: 'title',
+            label: 'Title'
+        }" />
 
         <div class="control-group">
             <label class="control-label" for="screen_name">description</label> 
