@@ -3,7 +3,7 @@ class Api::SearchController < ApiController
     
     def index
         search_text = "%#{params[:search_text]}%"
-        query = "content LIKE ? or title LIKE ?" 
+        query = "lower(content) LIKE lower(?) or lower(title) LIKE lower(?)" 
 
         blog_posts = BlogPost.where([query, search_text, search_text])
             .limit(params[:limit] || 10)
