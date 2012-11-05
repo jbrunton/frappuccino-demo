@@ -10,6 +10,9 @@
             <label class="control-label" for="user_name">title</label> 
             <div class="controls">
                 <input type="text" class="input-xxlarge" data-bind="value: title">
+                {[ _.each(title.errors(), function(msg) { ]}
+                    <p class="error">{{ msg }}</p>
+                {[ }); ]}
             </div>
         </div>
 
