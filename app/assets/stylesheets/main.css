@@ -55,6 +55,14 @@ pre code {
     text-align: center;
 }
 
-span.tag {
+.tags .tag:after {
+    content: '\0020\00B7';
+}
+
+.tags .tag:last-child:after {
+    content: '';
+}
+
+.tags .tag {
     white-space: nowrap;
 }

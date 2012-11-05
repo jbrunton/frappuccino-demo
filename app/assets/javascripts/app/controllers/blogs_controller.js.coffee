@@ -13,7 +13,8 @@ namespace "app.controllers", ->
             @renderer.render_page "blogs/edit", blog
 
         edit_blog: (id) =>
-            blog = @create_model( "Blog" ).load id
+            blog = @create_model( "Blog" ).load id,
+                include: { blog_posts: true }
             @renderer.render_page "blogs/edit", blog
             
         view_blog: (id) =>

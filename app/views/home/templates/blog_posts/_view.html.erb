@@ -15,14 +15,13 @@
         <div data-bind="html: make_and_prettify_code( content() )" />
     </section>
     <section class="span4">
-        <p class="leader">
+        <p class="leader tags">
             Tags:<br />
-            {[ _.each(tags(), function(tag, index, tags) { ]}
-                <a class="nav-to" href="{{ '/search/tag/' + encodeURI( tag ) }}">{{ tag }}</a>
-                {[ if (index < tags.length - 1) { ]}
-                    &sdot;
-                {[ } ]}
-            {[ }); ]}
+            <!-- ko foreach: tags -->
+            <span class="tag">
+                <a class="nav-to" data-bind="text: $data, attr: { href: '/search/tag/' + encodeURI( $data ) }" />
+            </span>
+            <!-- /ko -->
         </p>
     </span>
 </div>

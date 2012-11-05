@@ -1,5 +1,8 @@
 namespace "infrastructure", ->
-    
+
+    # TODO: this should be replaced with the default Frappuccino renderer once implemented
+    # (see https://github.com/jbrunton/frappuccino-core/issues/20)
+    #    
     class @KoRenderer extends core.Renderer
                 
         _registerTemplate: (name, content) ->

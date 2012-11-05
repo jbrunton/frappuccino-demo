@@ -1,18 +1,14 @@
-{[ if (!authenticated()) { ]}
+<div class="hero-unit" data-bind="visible: !authenticated()">
+    <h1>blogr</h1>
+    <p>generic blogging on the internets</p>
+    
+    <hr />
 
-    <div class="hero-unit">
-        <h1>blogr</h1>
-        <p>generic blogging on the internets</p>
-        
-        <hr />
-
-        <p>
-            <a href="/auth/facebook" class="btn btn-primary btn-large">sign in</a>
-            or <a class="nav-to" href="/register">register</a> for an account
-        </p>
-    </div>
-
-{[ } ]}
+    <p>
+        <a href="/auth/facebook" class="btn btn-primary btn-large">sign in</a>
+        or <a class="nav-to" href="/register">register</a> for an account
+    </p>
+</div>
 
 <div class="page-header">
     <h1>Current Activity</h1>
@@ -25,16 +21,11 @@
     </div>
     <div class="span4" id="trending-tags">
         <h2>Trending Tags</h2>
-        <p class="leader">
-            {[ _.each(trending_tags(), function(tag, index, tags) { ]}
-                <span class="tag">
-                    <a class="nav-to" href="{{ '/search/tag/' + tag.tag() }}">{{ tag.tag() }}</a>
-                    (<span data-bind="text: tag.count()" />)
-                </span>
-                {[ if (index < tags.length - 1) { ]}
-                    &sdot;
-                {[ } ]}
-            {[ }); ]}
+        <p class="leader tags" data-bind="foreach: trending_tags">
+            <span class="tag">
+                <a class="nav-to" data-bind="text: tag, attr: { href: '/search/tag/' + encodeURI( tag() ) }" />
+                (<span data-bind="text: count()" />)
+            </span>
         </p>
     </div>
 </div>

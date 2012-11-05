@@ -17,51 +17,48 @@
 
             <div class="profile clearfix">
                 
-                {[ if (bio()) { ]}
-                    {[ if (avatar_url()) { ]}
-                    <div class="thumbnail pull-left">
-                        <img data-bind="attr: { src: avatar_url }" />
-                    </div>
-                    {[ } ]}
+                <!-- ko if: bio() -->
+                    <!-- ko if: avatar_url() -->
+                        <div class="thumbnail pull-left">
+                            <img data-bind="attr: { src: avatar_url }" />
+                        </div>
+                    <!-- /ko -->                    
                     <h4 data-bind="text: screen_name" />
                     <em><p data-bind="text: bio" /></em>
+                <!-- /ko -->
                 
-                {[ } else if (authenticated()) { ]}
-                    
+                <!-- ko if: !!authenticated() && !bio() -->
                     <p><a class="nav-to" data-bind="attr: { href: edit_url_for( $data ) }">Tell the world a little about yourself</a></p>
-                
-                {[ } ]}
+                <!-- /ko -->
                     
             </div>
 
             <p>Contact: <a data-bind="attr: { href: email_url( email() ) }, text: email" /></p>
         <section>
         <hr />
-        <section>
-            {[ if (blogs().length > 0) { ]}
+        <section data-bind="display: blogs().length > 0">
                 <h2>Blogs</h2>
                 <hr />                
                 <div data-bind="template: { name: 'template:blogs/list', data: blogs() }"></div>
-            {[ } ]}
         </section>
     </div>
     <div class="span8">
         <section>
-            {[ if (blogs().length > 0) { ]}
+            <!-- ko if: blogs().length > 0 -->
                 <h2>Recent Posts</h2>
                 <hr />
                 <div data-bind="template: { name: 'template:blog_posts/list', data: recent_posts() }"></div>
-            {[ } else if (authenticated()) { ]}
-                <!-- TODO: only show this if authenticated as user -->
+            <!-- /ko -->
+            <!-- ko if: !!authenticated() && !(blogs().length > 0) -->
                 <h2>Get Started</h2>
                 <hr />
                 <p>
                     Time to get going.
-                    <a class="nav-to" href="{{ url_for( 'blogs', null, 'create' ) }}">
+                    <a class="nav-to" data-bind="attr: { href: url_for( 'blogs', null, 'create' ) }">
                         Click here to start a new blog.
                     </a>
                 </p>
-            {[ } ]}
+            <!-- /ko -->
         </section>
     </div>
 </div>

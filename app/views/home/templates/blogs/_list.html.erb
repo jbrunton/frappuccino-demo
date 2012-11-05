@@ -1,13 +1,9 @@
-<ul class="nav nav-pills nav-stacked">
-    {[ _.each($data, function(blog) { ]}
-
+<ul class="nav nav-pills nav-stacked" data-bind="foreach: $data">
     <li>
-        <a class="nav-to" data-bind="attr: { href: url_for( blog ) }">
-            <h3 data-bind="text: blog.title" />
-            <p data-bind="text: blog.description" />
+        <a class="nav-to" data-bind="attr: { href: url_for( $data ) }">
+            <h3 data-bind="text: title" />
+            <p data-bind="text: description" />
         </a>
     </li>
-
-    {[ }); ]}
     <hr />
 </ul>
