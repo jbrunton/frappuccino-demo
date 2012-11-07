@@ -10,6 +10,7 @@
 //= require jquery_ujs
 //= require pagedown
 //= require prettify
+//= require underscore
 //= require core
 //= require lib
 //= require_tree ./infrastructure
