@@ -1,11 +1,11 @@
-namespace "config", ->
+namespace "config"
 
-    @renderer =
+config.renderer =
 
-        default_bindings:
+    default_bindings:
 
-            header:
-                template: "header"
+        header:
+            template: "header"
 
-            master:
-                template: "master"
+        master:
+            template: "master"

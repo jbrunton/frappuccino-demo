@@ -1,5 +1,5 @@
-namespace "app.models", ->
+namespace "app.models"
 
-    class @Tag extends core.Model
-        @attr "tag"
-        @attr "count"
+class app.models.Tag extends core.Model
+    @attr "tag"
+    @attr "count"

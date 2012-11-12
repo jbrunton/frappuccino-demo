@@ -8,7 +8,7 @@ class app.Bootstrapper extends core.Bootstrapper
         
         # container.registerClass "Application", app.Application, singleton: true
         container.register_class "Renderer", infrastructure.KoRenderer, singleton: true
-        container.register_class "Router", infrastructure.BackboneRouter, singleton: true
+        container.register_class "Router", core.routes.BackboneRouter, singleton: true
         container.register_class "PropertyFactory", core.types.KoPropertyFactory, singleton: true
         container.register_class "ModelRepository", core.resources.HttpRepository, singleton: true
 

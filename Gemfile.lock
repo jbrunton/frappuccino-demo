@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jbrunton/frappuccino-core.git
-  revision: 0aa73648c373570b92781a89628d6ae70c879c75
+  revision: c5a9df394ea4365c8b6db2eaa1beb19c37ea952e
   specs:
     frappuccino-core (0.0.1)
       railties (~> 3.1)
@@ -126,7 +126,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (0.9.2.2)
+    rake (10.0.0)
     rb-fchange (0.0.5)
       ffi
     rb-fsevent (0.9.1)

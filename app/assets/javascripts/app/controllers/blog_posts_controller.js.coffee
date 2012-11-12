@@ -2,22 +2,17 @@ namespace "app.controllers"
 
 class app.controllers.BlogPostsController extends core.ApplicationModule
 
-    routes:
-        "blogs/:id/compose":    "create_post"
-        "blog_posts/:id/view":  "view_post"
-        "blog_posts/:id/edit":  "edit_post"
-        
-    create_post: (blog_id) =>
+    create: (blog_id) =>
         post = @create_model( "BlogPost", blog_id: blog_id )
         post.decorate( app.decorators.TagsDecorator )
         @renderer.render_page "blog_posts/edit", post
         
-    edit_post: (id) =>
+    edit: (id) =>
         post = @create_model( "BlogPost" ).load id
         post.decorate( app.decorators.TagsDecorator )
         @renderer.render_page "blog_posts/edit", post
         
-    view_post: (id) =>
+    view: (id) =>
         post = @create_model( "BlogPost" ).load id,
             include: { blog: { user: true } }
         post.decorate( app.decorators.MarkdownDecorator )

@@ -11,8 +11,8 @@
 //= require pagedown
 //= require prettify
 //= require underscore
-//= require core
 //= require lib
+//= require core
 //= require_tree ./infrastructure
 //= require_tree ./app
 //= require_tree ./config

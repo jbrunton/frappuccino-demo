@@ -1,4 +1,4 @@
-namespace "app.helpers", ->
+namespace "app.helpers"
 
 class app.helpers.ApplicationHelper extends core.DependentObject
     @dependency router: "Router"
