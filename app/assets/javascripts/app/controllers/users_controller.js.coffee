@@ -1,17 +1,13 @@
-namespace "app.controllers", ->
+namespace "app.controllers"
 
-    class @UsersController extends core.ApplicationModule
-    
-        routes:
-            "users/:id/view":   "view_user"
-            "users/:id/edit":   "edit_user"
-            
-        edit_user: (id) =>
-            user = @create_model( "User" ).load id
-            @renderer.render_page "users/edit", user
-            
-        view_user: (id) =>
-            user = @create_model( "User" ).load id,
-                include: { blogs: true, recent_posts: true }
- 
-            @renderer.render_page "users/view", user
+class app.controllers.UsersController extends core.ApplicationModule
+
+    edit: (id) =>
+        user = @create_model( "User" ).load id
+        @renderer.render_page "users/edit", user
+        
+    view: (id) =>
+        user = @create_model( "User" ).load id,
+            include: { blogs: true, recent_posts: true }
+
+        @renderer.render_page "users/view", user

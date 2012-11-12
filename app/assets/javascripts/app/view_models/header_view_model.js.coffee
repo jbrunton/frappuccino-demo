@@ -1,10 +1,10 @@
-namespace "app.view_models", ->
+namespace "app.view_models"
 
-    class @HeaderViewModel extends core.DependentObject
-        @dependency router: "Router"
+class app.view_models.HeaderViewModel extends core.DependentObject
+    @dependency router: "Router"
+
+    constructor: ( @sandbox ) ->
+        @search_text = ko.observable()
     
-        constructor: ( @sandbox ) ->
-            @search_text = ko.observable()
-        
-        search: =>
-            @sandbox.router.navigate("/search/#{@search_text()}")
+    search: =>
+        @sandbox.router.navigate("/search/#{@search_text()}")

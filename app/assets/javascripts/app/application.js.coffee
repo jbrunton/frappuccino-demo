@@ -1,7 +1,7 @@
-namespace "app", ->
+namespace "app"
 
-        class @Application extends core.Application
-    
-            run: ( bootstrapper ) ->
-                bootstrapper = super( bootstrapper )
-                bootstrapper.initialize()
+class app.Application extends core.Application
+
+    run: ( bootstrapper ) ->
+        bootstrapper = super( bootstrapper )
+        bootstrapper.initialize()
