@@ -11,6 +11,7 @@
 //= require pagedown
 //= require prettify
 //= require underscore
+//= require backbone
 //= require lib
 //= require core
 //= require_tree ./infrastructure
