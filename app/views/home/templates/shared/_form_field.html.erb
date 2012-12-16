@@ -2,7 +2,7 @@
     <label class="control-label" data-bind="text: $label, attr: { for: $field }" /> 
     <div class="controls">
         <input type="text" class="input-large"
-            data-bind="value: $parent[$field], attr: { name: $field }" />
+            data-bind="value: $parent[$field], attr: { name: $field }, visible: $textarea" />
         <div data-bind="template: {
                     name: 'template:shared/attr_errors',
                     data: $parent[$field].errors }" />
