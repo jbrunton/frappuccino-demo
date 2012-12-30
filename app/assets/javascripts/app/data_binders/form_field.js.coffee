@@ -5,7 +5,7 @@ ko.bindingHandlers.formField =
         options = ko.utils.unwrapObservable(valueAccessor())
         
         options.name = 'template:shared/form_field'
-        context = context.createChildContext({ $field: options.field, $label: options.label }, context.$data)
+        context = context.createChildContext({ $field: options.field, $label: options.label, $textarea: options.textarea }, context.$data)
         context.$data = options.data unless not options.data?
         
         ko.bindingHandlers.template.update( element, valueAccessor, allBindingsAccessor, viewModel, context )

@@ -5,15 +5,15 @@
 
         <div data-bind="formField: {
             field: 'title',
-            label: 'Title'
+            label: 'Title',
+            textarea: false
         }" />
 
-        <div class="control-group">
-            <label class="control-label" for="screen_name">description</label> 
-            <div class="controls">
-                <textarea class="input-xxlarge" data-bind="value: description" />
-            </div>
-        </div>
+        <div data-bind="formField: {
+            field: 'description',
+            label: 'Description',
+            textarea: true
+        }" />
 
         <div class="control-group" data-bind="visible: id()">
             <label class="control-label">posts</label>
